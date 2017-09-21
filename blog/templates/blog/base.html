@@ -1,7 +1,11 @@
 {% load staticfiles %}
+{% comment " " %}
+{% include 'blog/header.html' %}
+{% endcomment %}
+
 <html>
     <head>
-        <title>Panel Picker v0.1</title>
+        <title>Virtual Panel Builder v0.1</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
@@ -12,7 +16,14 @@
         {% if user.is_authenticated %}
             <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
         {% endif %}
-        <h1><a href="/">Panel Picker</a></h1>
+        <h1><a href="/">Virtual Panel Builder</a></h1>
+        </div>
+        <div class="topnav" id="myTopnav">
+            <a href="/">Panels</a>
+            <a href="/post/new/">Add a New Panel</a>
+            <a href="/">Genes</a>
+            <a href="/">Virtual Panels</a>
+            <a href="/post/new">Add a New Virtual Panel</a>
         </div>
         <div class="content container">
             <div class="row">
@@ -24,3 +35,5 @@
         </div>
     </body>
 </html>
+
+{% include 'blog/bootstrap_core.html' %}
