@@ -1,0 +1,11 @@
+{% load staticfiles %}
+
+{% load crispy_forms_tags %}
+
+<div class="row">
+    <div class="col-md-7">
+        {% crispy form %}
+    </div>
+</div>
+
+{% include 'blog/bootstrap_core.html' %}
