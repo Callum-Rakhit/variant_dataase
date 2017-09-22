@@ -3,7 +3,7 @@ from django.utils import timezone
 
 class Post(models.Model):
 	author = models.ForeignKey('auth.User')
-	title = models.CharField(max_length=200)
+	Panel_Name = models.CharField(max_length=200)
 	genes = models.TextField()
 	subpanels = models.NullBooleanField(blank=True, null=True)
 	created_date = models.DateTimeField(default=timezone.now)
@@ -14,7 +14,7 @@ class Post(models.Model):
 		self.save()
 
 	def __str__(self):
-		return self.title
+		return self.Panel_Name
 
 class Panel(models.Model):
     PanelName = models.CharField(max_length=30, unique=True)

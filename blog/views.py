@@ -68,3 +68,10 @@ def panel_list(request):
         "gene_data": gene_data,
     }
     return render(request, "panel_list.html", context)
+
+def home_page(request):
+    title = "Welcome to the Primer Database"
+    context = {
+        "title": title,
+    }
+    return render(request, "blog/home.html", context)
