@@ -3,6 +3,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout , Field, Fieldset
 from .models import Post, Panel
 
+
 class PostForm(forms.ModelForm):
 
     class Meta:
@@ -26,3 +27,13 @@ class NewPanelForm(forms.ModelForm):
         self.helper.form_method = 'post'
         self.helper.form_action = '.'
         self.helper.add_input(Submit('submit', 'Submit'))
+
+'''
+
+class Genes(Genes.ModelForm):
+
+    class Meta:
+        model = Genes
+        fields = ['GeneName', 'Transcripts']
+
+'''

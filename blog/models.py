@@ -24,9 +24,13 @@ class Panel(models.Model):
     def __str__(self):
         return self.PanelName
 
-class Gene(models.Model):
-    Panel = models.ForeignKey(Panel, null=True, blank=True)
+'''
+
+class Genes(models.Model):
+    Panel = models.TextField(null=True, blank=True)
     GeneName = models.CharField(max_length=10, unique=True)
 
     def __str__(self):
         return self.GeneName
+
+'''
