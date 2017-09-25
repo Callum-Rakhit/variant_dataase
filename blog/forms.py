@@ -7,7 +7,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('Panel_Name', 'genes', 'subpanels')
+        fields = ('Panel_Name', 'genes', 'transcripts', 'subpanels')
 
 class NewPanelForm(forms.ModelForm):
     Notes = forms.CharField(

@@ -5,6 +5,7 @@ class Post(models.Model):
 	author = models.ForeignKey('auth.User')
 	Panel_Name = models.CharField(max_length=200)
 	genes = models.TextField()
+	transcripts = models.TextField(blank=True, null=True)
 	subpanels = models.NullBooleanField(blank=True, null=True)
 	created_date = models.DateTimeField(default=timezone.now)
 	published_date = models.DateTimeField(blank=True, null=True)

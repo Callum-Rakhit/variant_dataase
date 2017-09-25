@@ -39,7 +39,6 @@ def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
 
-@login_required
 def new_panel(request):
     title = "Add a new Panel"
     if request.method == "POST":
@@ -57,7 +56,6 @@ def new_panel(request):
     }
     return render(request, "blog/newform.html", context)
 
-@login_required
 def panel_list(request):
     order_by = request.GET.get('order_by', 'PanelName')
     gene_data = Gene.objects.all()
@@ -75,3 +73,10 @@ def home_page(request):
         "title": title,
     }
     return render(request, "blog/home.html", context)
+
+def gene_list(request):
+    title = "Welcome to the Primer Database"
+    context = {
+        "title": title,
+    }
+    return render(request, "blog/genes.html", context)
