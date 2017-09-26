@@ -1,0 +1,15 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+	{% for panel in panels %}
+		<div class="panel">
+			<div class="date">
+				{{ panel.published_date }}
+			</div>
+			<h1><a href="{% url 'panel_detail' pk=panel.pk %}">{{ panel.NGS_Panel_Name }}</a></h1>
+			<p>{{ panel.Gene_IDs|linebreaks }}</p>
+			<p>{{ panel.Transcript_IDs|linebreaks }}</p>
+			<p>{{ panel.Virtual_Panels|linebreaks }}</p>
+		</div>
+	{% endfor %}
+{% endblock content %}

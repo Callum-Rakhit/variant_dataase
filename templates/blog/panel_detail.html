@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="panel">
+        {% if panel.published_date %}
+            <div class="date">
+                {{ panel.published_date }}
+            </div>
+        {% endif %}
+        <!--/.{% if user.is_authenticated %}
+        <a class="btn btn-default" href="{% url 'panel_edit' pk=panel.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        {% endif %}-->
+        <h1>{{ panel.NGS_Panel_Name }}</h1>
+        <p>{{ panel.Gene_IDs|linebreaksbr }}</p>
+        <p>{{ panel.Transcript_IDs|linebreaksbr }}</p>
+        <p>{{ panel.Virtual_Panels|linebreaksbr }}</p>
+    </div>
+{% endblock %}

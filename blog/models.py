@@ -1,12 +1,12 @@
 from django.db import models
 from django.utils import timezone
 
-class Post(models.Model):
+class NGSPanel(models.Model):
 	author = models.ForeignKey('auth.User')
-	Panel_Name = models.CharField(max_length=200)
-	genes = models.TextField()
-	transcripts = models.TextField(blank=True, null=True)
-	subpanels = models.NullBooleanField(blank=True, null=True)
+	NGS_Panel_Name = models.CharField(max_length=200)
+	Gene_IDs = models.TextField()
+	Transcript_IDs = models.TextField(blank=True, null=True)
+	Virtual_Panels = models.NullBooleanField(blank=True, null=True)
 	created_date = models.DateTimeField(default=timezone.now)
 	published_date = models.DateTimeField(blank=True, null=True)
 
@@ -15,22 +15,4 @@ class Post(models.Model):
 		self.save()
 
 	def __str__(self):
-		return self.Panel_Name
-
-class Panel(models.Model):
-    PanelName = models.CharField(max_length=30, unique=True)
-    Notes = models.TextField(null=True, blank=True)
-
-    def __str__(self):
-        return self.PanelName
-
-'''
-
-class Genes(models.Model):
-    Panel = models.TextField(null=True, blank=True)
-    GeneName = models.CharField(max_length=10, unique=True)
-
-    def __str__(self):
-        return self.GeneName
-
-'''
+		return self.NGS_Panel_Name
