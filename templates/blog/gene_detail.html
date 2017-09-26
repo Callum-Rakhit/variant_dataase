@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="gene">
+        {% if gene.published_date %}
+            <div class="date">
+                {{ panel.published_date }}
+            </div>
+        {% endif %}
+        <h1>{{ gene.Gene_Name }}</h1>
+        <p>{{ gene.Gene_IDs|linebreaksbr }}</p>
+        <p>{{ gene.Transcript_IDs|linebreaksbr }}</p>
+        <p>{{ gene.Virtual_Panels|linebreaksbr }}</p>
+    </div>
+{% endblock %}

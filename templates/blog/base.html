@@ -1,7 +1,4 @@
 {% load staticfiles %}
-{% comment " " %}
-{% include 'blog/header.html' %}
-{% endcomment %}
 
 <html>
     <head>
@@ -11,31 +8,6 @@
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{% static 'css/layout.css' %}">
     </head>
-<!--/.
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle Navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="{% url 'home' %}">Home</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                    aria-expanded="false">Dropdown Things<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><<a href="/home">Home</a></li>
-                    <li><a href="/">Panels</a></li>
-               </ul>
-        </ul>
-    </div>
-    </div>
--->
     </nav>
     <body>
         <div class="page-header">
@@ -44,11 +16,13 @@
         <div class="topnav" id="myTopnav">
             <a href="/home">Home</a>
             <a href="/">Panels</a>
-            <a href="/post/new/">Add a New Panel</a>
-            <a href="/genes">Genes</a>
+            <a href="/panel/new">Add Panel</a>
+            <a href="/gene">Genes</a>
+            <a href="/gene_new">Add Gene</a>
             <a href="/">Virtual Panels</a>
-            <a href="/post/new">Add a New Virtual Panel</a>
-            <!--/.<a href="/newpanel">Test</a>-->
+            <a href="/panel/new">Add Virtual Panel</a>
+            <a href="/">Transcripts</a>
+            <a href="/panel/new">Add Transcript</a>
         </div>
         <div class="content container">
             <div class="row">
