@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from .models import NGSPanel, NewGene#, Panel
-from .forms import NGSPanelForm, NewGeneForm#, NewPanelForm
+from .models import NGSPanel, NewGene
+from .forms import NGSPanelForm, NewGeneForm, NewTestForm
 # from django.contrib.auth.decorators import login_required
+
 
 def home_page(request):
     title = "Panel Database"
@@ -10,6 +11,7 @@ def home_page(request):
         "title": title,
     }
     return render(request, "blog/home.html", context)
+
 
 def panel_new(request):
     if request.method == "POST":
@@ -23,6 +25,7 @@ def panel_new(request):
     else:
         form = NGSPanelForm()
     return render(request, 'blog/panel_edit.html', {'form': form})
+
 
 def panel_edit(request, pk):
     panel = get_object_or_404(NGSPanel, pk=pk)
@@ -38,16 +41,16 @@ def panel_edit(request, pk):
         form = NGSPanelForm(instance=panel)
     return render(request, 'blog/panel_edit.html', {'form': form})
 
+
 def panel_detail(request, pk):
     panel = get_object_or_404(NGSPanel, pk=pk)
     return render(request, 'blog/panel_detail.html', {'panel': panel})
 
+
 def panel_list(request):
     panel = NGSPanel.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-    return render(request, 'blog/panel_list.html', {'panels': panel })
+    return render(request, 'blog/panel_list.html', {'panels': panel})
 
-def gene(args):
-    pass
 
 def gene_new(request):
     if request.method == "POST":
@@ -65,7 +68,8 @@ def gene_new(request):
             "title": title,
             'form': form
     }
-    return render(request, "blog/gene_new.html", context)
+    return render(request, "blog/gene_edit.html", context)
+
 
 def gene_edit(request, pk):
     panel = get_object_or_404(NewGene, pk=pk)
@@ -81,10 +85,30 @@ def gene_edit(request, pk):
         form = NewGeneForm(instance=panel)
     return render(request, 'blog/gene_edit.html', {'form': form})
 
+
 def gene_detail(request, pk):
     gene = get_object_or_404(NewGene, pk=pk)
     return render(request, 'blog/gene_detail.html', {'gene': gene})
 
+
 def gene_list(request):
     gene = NewGene.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-    return render(request, 'blog/gene_list.html', {'genes': gene })
+    return render(request, 'blog/gene_list.html', {'genes': gene})
+
+
+def new_test(request):
+    if request.method == "POST":
+        form = NewTestForm(request.POST)
+        title = "New Test Added"
+        if form.is_valid():
+            test = form.save(commit=False)
+            test.save()
+            return redirect('/')
+    else:
+        form = NewTestForm()
+        title = "Add a new Test"
+    context = {
+            "title": title,
+            'form': form
+    }
+    return render(request, 'blog/new_test.html', {'form': form})

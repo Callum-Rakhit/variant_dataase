@@ -1,8 +1,5 @@
 from django import forms
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit, Layout , Field, Fieldset
-from .models import NGSPanel, NewGene#, Panel
-
+from .models import NGSPanel, NewGene, Test
 
 class NGSPanelForm(forms.ModelForm):
 
@@ -14,4 +11,10 @@ class NewGeneForm(forms.ModelForm):
 
     class Meta:
         model = NewGene
-        fields = ('Gene_Name', 'Gene_IDs', 'Transcript_IDs', 'Virtual_Panels')
+        fields = ('Gene_Name', 'Gene_IDs', 'Transcript_IDs', 'Virtual_Panels', 'Test')
+
+class NewTestForm(forms.ModelForm):
+
+    class Meta:
+        model = Test
+        fields = '__all__'

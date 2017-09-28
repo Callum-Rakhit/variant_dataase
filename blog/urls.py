@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^gene_new/$', view=views.gene_new, name='gene_new'),
     url(r'^gene/', view=views.gene_list, name='gene_list'),
     url(r'^gene/(?P<pk>\d+)/$', views.gene_detail, name='gene_detail'),
-    url(r'^gene/(?P<pk>\d+)/edit/$', views.gene_edit, name='gene_edit')
+    url(r'^gene/(?P<pk>\d+)/edit/$', views.gene_edit, name='gene_edit'),
+    url(r'^new_test', views.new_test, name='new_test')
 ]

@@ -8,8 +8,9 @@
 			</div>
 			<h1><a href="{% url 'gene_detail' pk=gene.pk %}">{{ gene.Gene_Name }}</a></h1>
 			<p>{{ gene.Gene_IDs|linebreaks }}</p>
-			<p>{{ gene.Transcript_IDs|linebreaks }}</p>
+			<p>{{ gene.Transcript_IDs|linebreaks }}
 			<p>{{ gene.Virtual_Panels|linebreaks }}</p>
+			<p>{{ gene.Test|linebreaks }}</p>
 		</div>
 	{% endfor %}
 {% endblock content %}
