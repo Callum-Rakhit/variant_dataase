@@ -25,6 +25,11 @@ def panel_new(request):
             return redirect('/')
     else:
         form = NGSPanelForm()
+        title = "Add a new panel"
+    context = {
+        "title": title,
+        'form': form
+    }
     return render(request, 'vPanelDBapp/panel_edit.html', {'form': form})
 
 
@@ -119,3 +124,7 @@ class HUGOListView(generic.ListView):
     model = HUGOgene
     context_object_name = 'HUGO_gene_list'  # template variable
     template_name = 'books/HUGO_gene_symbol_list.html'  # template name/location
+
+
+class HUGODetailView(generic.DetailView):
+    model = HUGOgene

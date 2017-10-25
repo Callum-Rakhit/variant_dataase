@@ -1,4 +1,4 @@
-from django.conf.urls import url, include
+from django.conf.urls import url
 from . import views
 
 urlpatterns = [
@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^gene/(?P<pk>\d+)/edit/$', views.gene_edit, name='gene_edit'),
     url(r'^new_hugogene', views.new_hugogene, name='new_hugogene'),
     url(r'^hugogene_list/(?P<pk>\d+)$', views.HUGOListView.as_view(), name='hugogene_list'),
+    url(r'^book/(?P<pk>\d+)$', views.HUGODetailView.as_view(), name='hugogene_detail'),
 ]
