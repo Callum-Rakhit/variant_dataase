@@ -8,7 +8,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0004_auto_20170922_1232'),
+        ('vPanelDBapp', '0004_auto_20170922_1232'),
     ]
 
     operations = [

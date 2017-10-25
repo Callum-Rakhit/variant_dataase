@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>HUGO Gene List</h1>
+
+    {% if hugogene_list %}
+    <ul>
+
+      {% for hugogene in hugogene_list %}
+      <li>
+        <a href="{{ hugogene.get_absolute_url }}">{{ hugogene.title }}</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no HUGO gene IDs</p>
+    {% endif %}
+{% endblock %}

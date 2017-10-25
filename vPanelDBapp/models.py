@@ -19,11 +19,11 @@ class NGSPanel(models.Model):
         return self.NGS_Panel_Name
 
 
-class Test(models.Model):
-    Test_ID = models.TextField(blank=True, null=True)
+class HUGOgene(models.Model):
+    HUGO_Gene_ID = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return self.Test_ID
+        return self.HUGO_Gene_ID
 
 
 class NewGene(models.Model):
@@ -34,7 +34,7 @@ class NewGene(models.Model):
     Virtual_Panels = models.NullBooleanField(blank=True, null=True)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
-    Test = models.ForeignKey(Test, blank=True, null=True)
+    HUGOgene = models.ForeignKey(HUGOgene, blank=True, null=True)
 
     def publish(self):
         self.published_date = timezone.now()

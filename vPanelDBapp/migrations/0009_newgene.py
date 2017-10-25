@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('blog', '0008_auto_20170925_1536'),
+        ('vPanelDBapp', '0008_auto_20170925_1536'),
     ]
 
     operations = [

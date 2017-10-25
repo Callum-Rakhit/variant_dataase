@@ -1,5 +1,5 @@
 from django import forms
-from .models import NGSPanel, NewGene, Test
+from .models import NGSPanel, NewGene, HUGOgene
 
 class NGSPanelForm(forms.ModelForm):
 
@@ -11,10 +11,10 @@ class NewGeneForm(forms.ModelForm):
 
     class Meta:
         model = NewGene
-        fields = ('Gene_Name', 'Gene_IDs', 'Transcript_IDs', 'Virtual_Panels', 'Test')
+        fields = ('Gene_Name', 'Gene_IDs', 'Transcript_IDs', 'Virtual_Panels', 'HUGOgene')
 
-class NewTestForm(forms.ModelForm):
+class NewHUGOgeneForm(forms.ModelForm):
 
     class Meta:
-        model = Test
+        model = HUGOgene
         fields = '__all__'
