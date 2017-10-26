@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import NGSPanel, NewSubpanel, HUGOgene
+from .models import HUGOgene, Panel, Subpanel
 
-admin.site.register(NGSPanel)
-admin.site.register(NewSubpanel)
 admin.site.register(HUGOgene)
+admin.site.register(Panel)
+admin.site.register(Subpanel)

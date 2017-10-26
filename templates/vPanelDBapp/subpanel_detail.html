@@ -1,15 +1,12 @@
 {% extends 'vPanelDBapp/base.html' %}
 
 {% block content %}
-    <div class="gene">
-        {% if gene.published_date %}
-            <div class="date">
-                {{ gene.published_date }}
-            </div>
+    <div class="subpanel">
         {% endif %}
-        <h1>{{ gene.Gene_Name }}</h1>
-        <p>{{ gene.Gene_IDs|linebreaksbr }}</p>
-        <p>{{ gene.Transcript_IDs|linebreaksbr }}</p>
-        <p>{{ gene.Virtual_Panels|linebreaksbr }}</p>
+        <h1>{{ subpanel.Subpanel_Name }}</h1>
+        <p>{{ subpanel.Subpanel_IDs|linebreaksbr }}</p>
+        <p>{{ subpanel.Username|linebreaks }}</p>
+        <p>{{ subpanel.Subpanel_Version|linebreaks }}</p>
+        <p>{{ subpanel.HUGOgene|linebreaks }}</p>
     </div>
 {% endblock %}

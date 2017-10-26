@@ -1,16 +1,15 @@
 {% extends "vPanelDBapp/base.html" %}
 
 {% block content %}
-	{% for gene in genes %}
-		<div class="gene">
-			<div class="date">
-				{{ gene.published_date }}
-			</div>
-			<h1><a href="{% url 'gene_detail' pk=gene.pk %}">{{ gene.Gene_Name }}</a></h1>
-			<p>{{ gene.Gene_IDs|linebreaks }}</p>
-			<p>{{ gene.Transcript_IDs|linebreaks }}
-			<p>{{ gene.Virtual_Panels|linebreaks }}</p>
-			<p>{{ gene.Test|linebreaks }}</p>
+	{% for subpanel in subpanels %}
+		<div class="subpanel">
+			<h1><a href="{% url 'subpanel_detail' pk=subpanel.pk %}">{{ subpanel.Subpanel_Name }}</a></h1>
+            <p>{{ subpanel.Subpanel_IDs|linebreaks }}</p>
+            <p>{{ subpanel.Username|linebreaks }}</p>
+            <p>{{ subpanel.Subpanel_Version|linebreaks }}</p>
+            <p>{{ subpanel.HUGOgene|linebreaks }}</p>
+            <p>{{ subpanel.Panel|linebreaks }}</p>
+
 		</div>
 	{% endfor %}
 {% endblock content %}

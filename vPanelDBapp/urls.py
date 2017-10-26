@@ -11,7 +11,5 @@ urlpatterns = [
     url(r'^subpanel/', view=views.subpanel_list, name='subpanel_list'),
     url(r'^subpanel/(?P<pk>\d+)/$', views.subpanel_detail, name='subpanel_detail'),
     url(r'^subpanel/(?P<pk>\d+)/edit/$', views.subpanel_edit, name='subpanel_edit'),
-    url(r'^new_hugogene', views.new_hugogene, name='new_hugogene'),
-    url(r'^hugogene_list/(?P<pk>\d+)$', views.HUGOListView.as_view(), name='hugogene_list'),
-    url(r'^book/(?P<pk>\d+)$', views.HUGODetailView.as_view(), name='hugogene_detail'),
+    url(r'^hugogene_list/$', views.hugogene_list, name='hugogene_list'),
 ]

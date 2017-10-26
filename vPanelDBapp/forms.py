@@ -1,20 +1,20 @@
 from django import forms
-from .models import NGSPanel, NewSubpanel, HUGOgene
+from .models import Panel, Subpanel, HUGOgene
 
-class NGSPanelForm(forms.ModelForm):
-
-    class Meta:
-        model = NGSPanel
-        fields = ('NGS_Panel_Name', 'Transcript_IDs', 'Virtual_Panels')
-
-class NewSubpanelForm(forms.ModelForm):
+class PanelForm(forms.ModelForm):
 
     class Meta:
-        model = NewSubpanel
-        fields = ('Transcript_IDs', 'Virtual_Panels', 'HUGOgene')
+        model = Panel
+        fields = ('Panel_Name', 'Panel_ID', 'Username', 'Panel_Version','HUGOgene')
 
-class NewHUGOgeneForm(forms.ModelForm):
+class SubpanelForm(forms.ModelForm):
+
+    class Meta:
+        model = Subpanel
+        fields = ('Subpanel_Name', 'Subpanel_ID', 'Username', 'Subpanel_Version','HUGOgene', 'Panel')
+
+class HUGOgeneForm(forms.ModelForm):
 
     class Meta:
         model = HUGOgene
-        fields = '__all__'
+        fields = ('HUGO_Gene_ID',)

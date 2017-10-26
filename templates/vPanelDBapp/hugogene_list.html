@@ -1,19 +1,9 @@
-{% extends "base.html" %}
+{% extends "vPanelDBapp/base.html" %}
 
 {% block content %}
-    <h1>HUGO Gene List</h1>
-
-    {% if hugogene_list %}
-    <ul>
-
-      {% for hugogene in hugogene_list %}
-      <li>
-        <a href="{{ hugogene.get_absolute_url }}">{{ hugogene.title }}</a>
-      </li>
-      {% endfor %}
-
-    </ul>
-    {% else %}
-      <p>There are no HUGO gene IDs</p>
-    {% endif %}
-{% endblock %}
+	{% for hugogene in hugogenes %}
+		<div class="hugogene">
+			<h1><a href="{% url 'hugogene_detail' pk=hugogene.pk %}">{{ hugogene.HUGO_Gene_ID }}</a></h1> }}</a></h1>
+		</div>
+	{% endfor %}
+{% endblock content %}
