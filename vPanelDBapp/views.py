@@ -52,7 +52,7 @@ def panel_detail(request, pk):
 
 
 def panel_list(request):
-    panel = NGSPanel.objects
+    panel = NGSPanel.objects.all()
     return render(request, 'vPanelDBapp/panel_list.html', {'panels': panel})
 
 
