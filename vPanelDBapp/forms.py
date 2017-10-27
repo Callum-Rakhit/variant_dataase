@@ -17,4 +17,4 @@ class HUGOgeneForm(forms.ModelForm):
 
     class Meta:
         model = HUGOgene
-        fields = ('HUGO_Gene_ID',)
+        fields = ('symbol', 'locationSortable', 'ensemblGeneID')

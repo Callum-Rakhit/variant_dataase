@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Panel, Subpanel, HUGOgene
 from .forms import PanelForm, SubpanelForm, HUGOgeneForm
-from django.views import generic
 
 
 def home_page(request):

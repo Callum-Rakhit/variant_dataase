@@ -2,9 +2,9 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^home/$', view=views.home_page, name='home'),
-    url(r'^panel/new/$', views.panel_new, name='panel_new'),
-    url(r'^$', views.panel_list, name='panel_list'),
+    url(r'^$', view=views.home_page, name='home'),
+    url(r'^panel_new/$', views.panel_new, name='panel_new'),
+    url(r'^panel/', views.panel_list, name='panel_list'),
     url(r'^panel/(?P<pk>\d+)/$', views.panel_detail, name='panel_detail'),
     url(r'^panel/(?P<pk>\d+)/edit/$', views.panel_edit, name='panel_edit'),
     url(r'^subpanel_new/$', view=views.subpanel_new, name='subpanel_new'),
