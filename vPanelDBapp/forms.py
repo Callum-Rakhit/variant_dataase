@@ -11,10 +11,11 @@ class SubpanelForm(forms.ModelForm):
 
     class Meta:
         model = Subpanel
-        fields = ('Subpanel_Name', 'Subpanel_ID', 'Username', 'Subpanel_Version','HUGOgene', 'Panel')
+        fields = ('Subpanel_Name', 'Subpanel_ID', 'Username', 'Subpanel_Version', 'Panel', 'HUGOgene')
 
 class HUGOgeneForm(forms.ModelForm):
 
     class Meta:
         model = HUGOgene
         fields = ('symbol', 'locationSortable', 'ensemblGeneID')
+

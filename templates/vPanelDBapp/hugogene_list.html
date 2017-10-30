@@ -3,7 +3,9 @@
 {% block content %}
 	{% for hugogene in hugogenes %}
 		<div class="hugogene">
-			<h1><a href="{% url 'hugogene_detail' pk=hugogene.pk %}">{{ hugogene.HUGO_Gene_ID }}</a></h1> }}</a></h1>
+			<h1><a href="{% url 'hugogene_detail' pk=hugogene.pk %}">{{ hugogene.symbol }}</a></h1>
+            <p>{{ hugogene.ensemblGeneID|linebreaks }}</p>
+            <p>{{ hugogene.locationSortable|linebreaks }}</p>
 		</div>
 	{% endfor %}
 {% endblock content %}

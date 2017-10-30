@@ -2,6 +2,8 @@
 
 {% block content %}
     <div class="hugogene">
-        <h1>{{ hugogene.HUGOgene }}</h1>
+        <h1>{{ hugogene.symbol }}</h1>
+        <p>{{ hugogene.ensemblGeneID|linebreaks }}</p>
+        <p>{{ hugogene.locationSortable|linebreaks }}</p>
     </div>
 {% endblock %}

@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^subpanel/(?P<pk>\d+)/$', views.subpanel_detail, name='subpanel_detail'),
     url(r'^subpanel/(?P<pk>\d+)/edit/$', views.subpanel_edit, name='subpanel_edit'),
     url(r'^hugogene_list/$', views.hugogene_list, name='hugogene_list'),
+    url(r'^search_results/$', view=views.search, name='Search'),
 ]

@@ -1,0 +1,47 @@
+{% include 'head.html' %}
+
+<script>
+
+    $(document).ready(function() {
+    $('#mySearchTable').DataTable( {
+        "lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]],
+        "ordering": false,
+        "searching": false
+    } );
+} );
+
+</script>
+
+
+
+<div class="row">
+     <div class="col-md-5">
+          <table id="mySearchTable" class="display">
+              <thead>
+                  <tr>
+                      <th>Results:</th>
+                  </tr>
+              </thead>
+              <tbody>
+              {% if tag_entries %}
+              <tr>
+                  <td>
+                      Tags:
+                  </td>
+              </tr>
+              {% for entries in tag_entries %}
+              <tr>
+                  <td>
+                      &nbsp;&nbsp;
+                      <a href="{% url 'hugogene:symbol' pk=hugogene.pk %}">{{ entries.Name }}</a>
+                  </td>
+              </tr>
+              {% endfor %}
+              {% endif %}
+              </tbody>
+          </table>
+     </div>
+</div>
+
+{% include 'bootstrap_core.html' %}
+
