@@ -6,13 +6,14 @@ class PanelForm(forms.ModelForm):
 
     class Meta:
         model = Panel
-        fields = ('Panel_Name', 'Panel_ID', 'Username', 'Panel_Version','HUGOgene')
+        fields = ('Panel_Name', 'Panel_ID', 'Username', 'Panel_Version','gene')
 
 class SubpanelForm(forms.ModelForm):
 
     class Meta:
         model = Subpanel
-        fields = ('Subpanel_Name', 'Subpanel_ID', 'Username', 'Subpanel_Version', 'Panel', 'HUGOgene')
+        fields = ('Subpanel_Name', 'Subpanel_ID', 'Subpanel_Version', 'Username', 'panel', 'gene')
+
 
 class HUGOgeneLookupForm(forms.ModelForm):
 

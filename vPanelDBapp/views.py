@@ -72,6 +72,7 @@ def subpanel_new(request):
 
 def subpanel_edit(request, pk):
     panel = get_object_or_404(Subpanel, pk=pk)
+
     if request.method == "POST":
         form = SubpanelForm(request.POST, instance=panel)
         if form.is_valid():

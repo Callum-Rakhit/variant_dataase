@@ -24,4 +24,6 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('vPanelDBapp.urls')),
     url(r'^ajax_select/', include(ajax_select_urls)),
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^chaining/', include('smart_selects.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

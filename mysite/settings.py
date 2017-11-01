@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'vPanelDBapp',
     'ajax_select',
+    'smart_selects',
 ]
 
 MIDDLEWARE_CLASSES = (
@@ -94,4 +95,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 LANGUAGE_CODE = 'en-GB'
 TIME_ZONE = 'Europe/London'
-

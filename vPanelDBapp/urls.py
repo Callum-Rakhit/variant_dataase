@@ -7,10 +7,13 @@ urlpatterns = [
     url(r'^panel/', views.panel_list, name='panel_list'),
     url(r'^panel/(?P<pk>\d+)/$', views.panel_detail, name='panel_detail'),
     url(r'^panel/(?P<pk>\d+)/edit/$', views.panel_edit, name='panel_edit'),
+
     url(r'^subpanel_new/$', view=views.subpanel_new, name='subpanel_new'),
     url(r'^subpanel/', view=views.subpanel_list, name='subpanel_list'),
     url(r'^subpanel/(?P<pk>\d+)/$', views.subpanel_detail, name='subpanel_detail'),
     url(r'^subpanel/(?P<pk>\d+)/edit/$', views.subpanel_edit, name='subpanel_edit'),
+
     url(r'^hugogene_list/$', views.hugogene_list, name='hugogene_list'),
+
     url(r'^search_results/$', view=views.search, name='Search'),
 ]
