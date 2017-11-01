@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.template import RequestContext
 from .models import Panel, Subpanel, HUGOgene
-from .forms import PanelForm, SubpanelForm, HUGOgeneForm
+from .forms import PanelForm, SubpanelForm, HUGOgeneLookupForm
 import re
 from django.db.models import Q
 
@@ -57,10 +56,10 @@ def panel_list(request):
 def subpanel_new(request):
     if request.method == "POST":
         form = SubpanelForm(request.POST)
-        title = "New Subpanel Added"
         if form.is_valid():
             subpanel = form.save(commit=False)
             subpanel.save()
+            return redirect('/')
     else:
         form = SubpanelForm()
         title = "Add a new Subpanel"
@@ -96,14 +95,14 @@ def subpanel_list(request):
 
 def hugogene_new(request):
     if request.method == "POST":
-        form = HUGOgeneForm(request.POST)
+        form = HUGOgeneLookupForm(request.POST)
         title = "New HUGO Gene Added"
         if form.is_valid():
             hugogene = form.save(commit=False)
             hugogene.save()
             return redirect('/')
     else:
-        form = HUGOgeneForm()
+        form = HUGOgeneLookupForm()
         title = "Add a new HUGO Gene"
     context = {
             "title": title,
@@ -144,9 +143,7 @@ def get_query(query_string, search_fields):
             query = query & or_query
     return query
 
-
-# This is the search view
-
+# Search view
 
 def search(request):
     query_string = ''

@@ -29,9 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'callum.pythonanywhere.com']
 
-
 # Application definition
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -42,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'vPanelDBapp',
+    'ajax_select',
 ]
 
 MIDDLEWARE_CLASSES = (
@@ -75,7 +74,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
@@ -91,3 +89,9 @@ DATABASES = {
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# Other bits
+
+LANGUAGE_CODE = 'en-GB'
+TIME_ZONE = 'Europe/London'
+

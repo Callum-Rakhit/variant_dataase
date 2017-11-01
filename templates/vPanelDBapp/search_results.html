@@ -1,4 +1,4 @@
-{% include 'head.html' %}
+{% include "vPanelDBapp/base.html" %}
 
 <script>
 
@@ -13,7 +13,6 @@
 </script>
 
 
-
 <div class="row">
      <div class="col-md-5">
           <table id="mySearchTable" class="display">
@@ -23,13 +22,13 @@
                   </tr>
               </thead>
               <tbody>
-              {% if tag_entries %}
+              {% if hugogene_entries %}
               <tr>
                   <td>
                       Tags:
                   </td>
               </tr>
-              {% for entries in tag_entries %}
+              {% for entries in hugogene_entries %}
               <tr>
                   <td>
                       &nbsp;&nbsp;

@@ -15,8 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf.urls.static import static
+from django.conf import settings
+from ajax_select import urls as ajax_select_urls
+
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('vPanelDBapp.urls')),
-]
+    url(r'^ajax_select/', include(ajax_select_urls)),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
