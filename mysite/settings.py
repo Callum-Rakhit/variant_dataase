@@ -11,15 +11,14 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
+# Security: keep the production secret key secret
 
 SECRET_KEY = 'jf8hds&gjrvskr1o%4qt$*9x47dh5nzk_)kw5ukb15am2e1(=6'
 
@@ -91,7 +90,12 @@ DATABASES = {
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# Other bits
+# Language/Timezone
 
 LANGUAGE_CODE = 'en-GB'
 TIME_ZONE = 'Europe/London'
+
+# Other bits
+
+USE_DJANGO_JQUERY = True
+JQUERY_URL = False

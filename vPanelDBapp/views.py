@@ -71,16 +71,16 @@ def subpanel_new(request):
 
 
 def subpanel_edit(request, pk):
-    panel = get_object_or_404(Subpanel, pk=pk)
+    subpanel = get_object_or_404(Subpanel, pk=pk)
 
     if request.method == "POST":
-        form = SubpanelForm(request.POST, instance=panel)
+        form = SubpanelForm(request.POST, instance=subpanel)
         if form.is_valid():
             subpanel = form.save(commit=False)
             subpanel.save()
             return redirect('subpanel_detail', pk=subpanel.pk)
     else:
-        form = SubpanelForm(instance=panel)
+        form = SubpanelForm(instance=subpanel)
     return render(request, 'vPanelDBapp/subpanel_edit.html', {'form': form})
 
 
@@ -110,6 +110,25 @@ def hugogene_new(request):
             'form': form
     }
     return render(request, 'vPanelDBapp/hugogene_edit.html', {'form': form})
+
+
+def hugogene_edit(request, pk):
+    hugogene = get_object_or_404(HUGOgene, pk=pk)
+
+    if request.method == "POST":
+        form = HUGOgeneLookupForm(request.POST, instance=hugogene)
+        if form.is_valid():
+            hugogene = form.save(commit=False)
+            hugogene.save()
+            return redirect('hugogene_edit', pk=hugogene.pk)
+    else:
+        form = HUGOgeneLookupForm(instance=hugogene)
+    return render(request, 'vPanelDBapp/hugopanel_edit.html', {'form': form})
+
+
+def hugogene_detail(request, pk):
+    hugogene = get_object_or_404(HUGOgene, pk=pk)
+    return render(request, 'vPanelDBapp/hugogene_detail.html', {'hugogene': hugogene})
 
 
 def hugogene_list(request):
@@ -144,7 +163,9 @@ def get_query(query_string, search_fields):
             query = query & or_query
     return query
 
+
 # Search view
+
 
 def search(request):
     query_string = ''
