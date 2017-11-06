@@ -14,9 +14,9 @@
         <h1><a href="/">Virtual Panel Database</a></h1>
         </div>
         <div class="nav navbar-nav navbar-right middle">
-            <form class="form-inline pull-xs-right" method="get" action="/search_results/">
+            <form class="form-inline pull-xs-right" method="get" action="/search/">
                 <input value="Search" class="form-control" type="textbox"  name="q" id="id_q" onfocus="if (this.value=='Search') this.value='';"/>
-                <!--Optional search button that can be added-->
+                <!--Search button-->
                 <!--<input class="btn btn-default btn-sm" type="submit" value="Submit"/>-->
             </form>
         </div>
@@ -35,6 +35,16 @@
                     {% endblock %}
                 </div>
             </div>
+        </div>
+        <div class="navbar-right">
+            <ul class="nav navbar-nav">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
     </body>
 </html>
 

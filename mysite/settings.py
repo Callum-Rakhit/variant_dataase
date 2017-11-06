@@ -22,9 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'jf8hds&gjrvskr1o%4qt$*9x47dh5nzk_)kw5ukb15am2e1(=6'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-
-DEBUG = True
+DEBUG = True # Don't run with debug on in the user version
 
 ALLOWED_HOSTS = ['127.0.0.1', 'callum.pythonanywhere.com']
 
@@ -89,6 +87,8 @@ DATABASES = {
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+LOGIN_REDIRECT_URL = '/login/'
+LOGOUT_URL = '/logout/'
 
 # Language/Timezone
 

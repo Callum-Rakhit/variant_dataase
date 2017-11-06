@@ -7,19 +7,19 @@ class HUGOgeneLookupForm(forms.ModelForm):
     class Meta:
         model = HUGOgene
         fields = ('symbol', 'locationSortable', 'ensemblGeneID')
-        tags = AutoCompleteSelectMultipleField('hugogenes', required=False, help_text=None)
-        category = AutoCompleteSelectField('categories', required=False, help_text=None)
+        #tags = AutoCompleteSelectMultipleField('hugogenes', required=False, help_text=None)
+        #category = AutoCompleteSelectField('categories', required=False, help_text=None)
 
 class PanelForm(forms.ModelForm):
 
     class Meta:
         model = Panel
-        fields = ('Panel_Name', 'Panel_ID', 'Username', 'Panel_Version','gene')
+        fields = ('panelName', 'panelID', 'username', 'panelVersion','gene')
 
 class SubpanelForm(forms.ModelForm):
 
     class Meta:
         model = Subpanel
-        fields = ('Subpanel_Name', 'Subpanel_ID', 'Subpanel_Version', 'Username', 'panel', 'gene')
+        fields = ('subpanelName', 'subpanelID', 'subpanelVersion', 'username', 'panel', 'gene')
 
 

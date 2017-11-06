@@ -1,8 +1,9 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from .models import Panel, Subpanel, HUGOgene
+import re # Needed for search function
+from django.db.models import Q # Needed for search function
+from .models import Panel, Subpanel, HUGOgene # import models
+from django.contrib.auth.decorators import login_required
 from .forms import PanelForm, SubpanelForm, HUGOgeneLookupForm
-import re
-from django.db.models import Q
+from django.shortcuts import render, get_object_or_404, redirect
 
 
 def home_page(request):
@@ -13,6 +14,7 @@ def home_page(request):
     return render(request, "vPanelDBapp/home.html", context)
 
 
+@login_required
 def panel_new(request):
     if request.method == "POST":
         form = PanelForm(request.POST)
@@ -30,6 +32,7 @@ def panel_new(request):
     return render(request, 'vPanelDBapp/panel_edit.html', {'form': form})
 
 
+@login_required
 def panel_edit(request, pk):
     panel = get_object_or_404(Panel, pk=pk)
     if request.method == "POST":
@@ -53,6 +56,7 @@ def panel_list(request):
     return render(request, 'vPanelDBapp/panel_list.html', {'panels': panel})
 
 
+@login_required
 def subpanel_new(request):
     if request.method == "POST":
         form = SubpanelForm(request.POST)
@@ -69,7 +73,7 @@ def subpanel_new(request):
     }
     return render(request, "vPanelDBapp/subpanel_edit.html", context)
 
-
+@login_required
 def subpanel_edit(request, pk):
     subpanel = get_object_or_404(Subpanel, pk=pk)
 
@@ -94,6 +98,7 @@ def subpanel_list(request):
     return render(request, 'vPanelDBapp/subpanel_list.html', {'subpanels': subpanel})
 
 
+@login_required
 def hugogene_new(request):
     if request.method == "POST":
         form = HUGOgeneLookupForm(request.POST)
@@ -112,6 +117,7 @@ def hugogene_new(request):
     return render(request, 'vPanelDBapp/hugogene_edit.html', {'form': form})
 
 
+@login_required
 def hugogene_edit(request, pk):
     hugogene = get_object_or_404(HUGOgene, pk=pk)
 
@@ -133,8 +139,9 @@ def hugogene_detail(request, pk):
 
 def hugogene_list(request):
     hugogene = HUGOgene.objects.all()
-    return render(request, 'vPanelDBapp/hugogene_list.html', {'hugogene': hugogene})
+    return render(request, 'vPanelDBapp/hugogene_list.html', {'hugogenes': hugogene})
 
+# https://www.julienphalip.com/blog/adding-search-to-a-django-site-in-a-snap/
 
 def normalize_query(query_string,
                     findterms=re.compile(r'"([^"]+)"|(\S+)').findall,
@@ -142,11 +149,20 @@ def normalize_query(query_string,
     return [normspace(' ', (t[0] or t[1]).strip()) for t in findterms(query_string)]
 
 
+''' 
+
+Splits the query string in individual keywords, to remove unnecessary spaces
+and group quoted words together.
+
+Example:
+
+>>> normalize_query('  some random  words "with   quotes  " and   spaces')
+['some', 'random', 'words', 'with quotes', 'and', 'spaces']
+
+'''
+
+
 def get_query(query_string, search_fields):
-    """
-    Returns a query, that is a combination of Q objects. That combination
-    aims to search keywords within a model by testing the given search fields.
-    """
     query = None  # Query to search for every search term
     terms = normalize_query(query_string)
     for term in terms:
@@ -164,6 +180,14 @@ def get_query(query_string, search_fields):
     return query
 
 
+'''
+
+Returns a query that is a combination of Q objects. That combination
+aims to search keywords within a model by testing the given search fields.
+
+'''
+
+
 # Search view
 
 
@@ -172,8 +196,8 @@ def search(request):
     found_entries = None
     if ('q' in request.GET) and request.GET['q'].strip():
         query_string = request.GET['q']
-        hugogene_query =  get_query(query_string, ['symbol', 'ensemblGeneID', 'locationSortable'])
-
+        hugogene_query =  get_query(query_string, ['symbol', 'ensemblGeneID',
+                                                   'locationSortable'])
         hugogene_entries = HUGOgene.objects.filter(hugogene_query)
         title = "Search Results"
         context = {
@@ -181,4 +205,22 @@ def search(request):
             'hugogene_entries': hugogene_entries,
             'title': title,
         }
-    return render('search_results.html', context)
+    return render(request, "vPanelDBapp/search_results.html", context)
+
+'''
+
+def search(request):
+    query_string = ''
+    found_entries = None
+    if ('q' in request.GET) and request.GET['q'].strip():
+        query_string = request.GET['q']
+
+        entry_query = get_query(query_string, ['title', 'body',])
+
+        found_entries = Entry.objects.filter(entry_query)
+
+    return render_to_response('search/search_results.html',
+                          { 'query_string': query_string, 'found_entries': found_entries },
+                          context_instance=RequestContext(request))
+
+'''

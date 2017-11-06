@@ -3,6 +3,8 @@
 {% block content %}
     <div class="subpanel">
         {% endif %}
+                <a class="btn btn-default" href="{% url 'subpanel_edit' pk=subpanel.pk %}">
+                    <span class="glyphicon glyphicon-pencil"></span></a>
         <h1>{{ subpanel.Subpanel_Name }}</h1>
         <p>{{ subpanel.Subpanel_IDs|linebreaksbr }}</p>
         <p>{{ subpanel.Username|linebreaks }}</p>

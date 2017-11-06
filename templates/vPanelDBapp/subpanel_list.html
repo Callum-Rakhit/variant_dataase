@@ -3,13 +3,12 @@
 {% block content %}
 	{% for subpanel in subpanels %}
 		<div class="subpanel">
-			<h1><a href="{% url 'subpanel_detail' pk=subpanel.pk %}">{{ subpanel.Subpanel_Name }}</a></h1>
-            <p>{{ subpanel.Subpanel_IDs|linebreaks }}</p>
-            <p>{{ subpanel.Username|linebreaks }}</p>
-            <p>{{ subpanel.Subpanel_Version|linebreaks }}</p>
+            <h1><a href="{% url 'subpanel_edit' pk=subpanel.pk %}">{{ subpanel.subpanelName }}</a></h1>
+            <p>{{ subpanel.subpanelID|linebreaks }}</p>
+            <p>{{ subpanel.username|linebreaks }}</p>
+            <p>{{ subpanel.subpanelVersion|linebreaks }}</p>
             <p>{{ subpanel.gene|linebreaks }}</p>
             <p>{{ subpanel.panel|linebreaks }}</p>
-
 		</div>
 	{% endfor %}
 {% endblock content %}

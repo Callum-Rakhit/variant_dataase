@@ -13,21 +13,21 @@ class HUGOgene(models.Model):
 
 
 class Panel(models.Model):
-    Panel_Name = models.CharField(max_length=20, blank=True, null=True)
-    Panel_ID = models.CharField(max_length=20, blank=True, null=True)
-    Panel_Version = models.IntegerField(blank=True, null=True)
-    Username = models.CharField(max_length=20, blank=True, null=True)
-    gene = models.ManyToManyField(HUGOgene, blank=True, null=True)
+    panelName = models.CharField(max_length=20, blank=True, null=True)
+    panelID = models.CharField(max_length=20, blank=True, null=True)
+    panelVersion = models.IntegerField(blank=True, null=True)
+    username = models.CharField(max_length=20, blank=True, null=True)
+    gene = models.ManyToManyField(HUGOgene, blank=True)
 
     def __str__(self):
-        return self.Panel_Name
+        return self.panelName
 
 
 class Subpanel(models.Model):
-    Subpanel_Name = models.CharField(max_length=20, blank=True, null=True)
-    Subpanel_ID = models.CharField(max_length=20, blank=True, null=True)
-    Subpanel_Version = models.IntegerField(blank=True, null=True)
-    Username = models.CharField(max_length=200, blank=True, null=True)
+    subpanelName = models.CharField(max_length=20, blank=True, null=True)
+    subpanelID = models.CharField(max_length=20, blank=True, null=True)
+    subpanelVersion = models.IntegerField(blank=True, null=True)
+    username = models.CharField(max_length=200, blank=True, null=True)
     gene = models.ManyToManyField(HUGOgene, blank=True)
     panel = ChainedManyToManyField(
         "Panel",
@@ -35,7 +35,7 @@ class Subpanel(models.Model):
         verbose_name='Subpanel Parent',
         chained_field="gene",
         chained_model_field="gene",
-        auto_choose=True, blank=True, null=True)
+        auto_choose=True, blank=True)
 
     def __str__(self):
-        return self.Subpanel_Name
+        return self.subpanelName

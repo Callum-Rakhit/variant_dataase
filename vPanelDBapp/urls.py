@@ -19,5 +19,5 @@ urlpatterns = [
     url(r'^hugogene/(?P<pk>\d+)/$', views.hugogene_detail, name='hugogene_detail'),
     url(r'^hugogene/(?P<pk>\d+)/edit/$', views.hugogene_edit, name='hugogene_edit'),
 
-    url(r'^search_results/$', view=views.search, name='Search'),
+    url(r'^search/$', view=views.search, name='Search'),
 ]

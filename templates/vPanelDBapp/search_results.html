@@ -1,4 +1,4 @@
-{% include "vPanelDBapp/base.html" %}
+{% extends "vPanelDBapp/base.html" %}
 
 <script>
 
@@ -12,6 +12,17 @@
 
 </script>
 
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Header</h3>
+        <p>
+            The search box returned this.
+        </p>
+
+    </div>
+</div>
 
 <div class="row">
      <div class="col-md-5">
@@ -25,14 +36,14 @@
               {% if hugogene_entries %}
               <tr>
                   <td>
-                      Tags:
+                      HUGO Genes:
                   </td>
               </tr>
               {% for entries in hugogene_entries %}
               <tr>
                   <td>
                       &nbsp;&nbsp;
-                      <a href="{% url 'hugogene:symbol' pk=hugogene.pk %}">{{ entries.Name }}</a>
+                      <a href="{% url 'hugogene_detail' pk=entries.pk %}">{{ entries.symbol }}</a>
                   </td>
               </tr>
               {% endfor %}
@@ -41,6 +52,6 @@
           </table>
      </div>
 </div>
+{% endblock content %}
 
 {% include 'bootstrap_core.html' %}
-

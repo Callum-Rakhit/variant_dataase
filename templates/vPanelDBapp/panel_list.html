@@ -3,11 +3,11 @@
 {% block content %}
 	{% for panel in panels %}
 		<div class="panel">
-			<h1><a href="{% url 'panel_detail' pk=panel.pk %}">{{ panel.Panel_Name }}</a></h1>
-            <p>{{ panel.Panel_ID|linebreaks }}</p>
-            <p>{{ panel.Username|linebreaks }}</p>
-            <p>{{ panel.Panel_Version|linebreaksbr }}</p>
-            <p>{{ panel.HUGOgene|linebreaksbr }}</p>
+			<h1><a href="{% url 'panel_edit' pk=panel.pk %}">{{ panel.panelName }}</a></h1>
+            <p>{{ panel.panelID|linebreaks }}</p>
+            <p>{{ panel.username|linebreaks }}</p>
+            <p>{{ panel.panelVersion|linebreaksbr }}</p>
+            <p>{{ panel.genes|linebreaksbr }}</p>
 		</div>
 	{% endfor %}
 {% endblock content %}
