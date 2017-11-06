@@ -87,6 +87,7 @@ DATABASES = {
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static_files", "our_static"),)
 LOGIN_REDIRECT_URL = '/login/'
 LOGOUT_URL = '/logout/'
 
@@ -97,5 +98,5 @@ TIME_ZONE = 'Europe/London'
 
 # Other bits
 
-USE_DJANGO_JQUERY = True
-JQUERY_URL = False
+# USE_DJANGO_JQUERY = True
+JQUERY_URL = True
