@@ -98,5 +98,5 @@ TIME_ZONE = 'Europe/London'
 
 # Other bits
 
-# USE_DJANGO_JQUERY = True
-JQUERY_URL = True
+USE_DJANGO_JQUERY = True
+JQUERY_URL = False

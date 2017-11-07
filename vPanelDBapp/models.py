@@ -29,13 +29,7 @@ class Subpanel(models.Model):
     subpanelVersion = models.IntegerField(blank=True, null=True)
     username = models.CharField(max_length=200, blank=True, null=True)
     gene = models.ManyToManyField(HUGOgene, blank=True)
-    panel = ChainedManyToManyField(
-        "Panel",
-        horizontal=True,
-        verbose_name='Subpanel Parent',
-        chained_field="gene",
-        chained_model_field="gene",
-        auto_choose=True, blank=True)
+    panel = models.ForeignKey(Panel, blank=True, null=True)
 
     def __str__(self):
         return self.subpanelName

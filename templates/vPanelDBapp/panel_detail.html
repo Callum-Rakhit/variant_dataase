@@ -1,13 +1,21 @@
-{% extends 'vPanelDBapp/base.html' %}
+{% extends "vPanelDBapp/base.html" %}
 
 {% block content %}
     <div class="panel">
-        <h1>{{ panel.Panel_Name }}</h1>
-        <p>{{ panel.Panel_ID|linebreaks }}</p>
-        <p>{{ panel.Username|linebreaks }}</p>
-        <p>{{ panel.Panel_Version|linebreaks }}</p>
-        <p>{{ panel.Subpanels|linebreaks }}</p>
-        <p>{{ panel.HUGOgene|linebreaksbr }}</p>
+        <h1>{{ panel.panelName }}</h1>
+        <p>{{ panel.panelID|linebreaks }}</p>
+        <p>{{ panel.username|linebreaks }}</p>
+        <p>{{ panel.panelVersion|linebreaks }}</p>
+        <p>
+            {% for hugoentry in panel.gene.all %}
+            {{ hugoentry.symbol }}
+            {% endfor %}
+        </p>
+        <p>
+            {% for parentpanel in subpanel.panel.all %}
+            {{ parentpanel.panelName }}
+            {% endfor %}
+        </p>
     </div>
 {% endblock %}
 

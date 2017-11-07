@@ -7,8 +7,16 @@
             <p>{{ subpanel.subpanelID|linebreaks }}</p>
             <p>{{ subpanel.username|linebreaks }}</p>
             <p>{{ subpanel.subpanelVersion|linebreaks }}</p>
-            <p>{{ subpanel.gene|linebreaks }}</p>
-            <p>{{ subpanel.panel|linebreaks }}</p>
+            <p>
+            {% for hugoentry in subpanel.gene.all %}
+                {{ hugoentry.symbol }}
+            {% endfor %}
+            </p>
+            <p>
+            {% for parentpanel in subpanel.panel.all %}
+                {{ parentpanel.panelName }}
+            {% endfor %}
+            </p>
 		</div>
 	{% endfor %}
 {% endblock content %}

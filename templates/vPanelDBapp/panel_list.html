@@ -7,7 +7,11 @@
             <p>{{ panel.panelID|linebreaks }}</p>
             <p>{{ panel.username|linebreaks }}</p>
             <p>{{ panel.panelVersion|linebreaksbr }}</p>
-            <p>{{ panel.genes|linebreaksbr }}</p>
+            <p>
+            {% for hugoentry in panel.gene.all %}
+                {{ hugoentry.symbol }}
+            {% endfor %}
+            </p>
 		</div>
 	{% endfor %}
 {% endblock content %}

@@ -1,15 +1,21 @@
-{% extends 'vPanelDBapp/base.html' %}
+{% extends "vPanelDBapp/base.html" %}
 
 {% block content %}
     <div class="subpanel">
-        {% endif %}
-                <a class="btn btn-default" href="{% url 'subpanel_edit' pk=subpanel.pk %}">
-                    <span class="glyphicon glyphicon-pencil"></span></a>
-        <h1>{{ subpanel.Subpanel_Name }}</h1>
-        <p>{{ subpanel.Subpanel_IDs|linebreaksbr }}</p>
-        <p>{{ subpanel.Username|linebreaks }}</p>
-        <p>{{ subpanel.Subpanel_Version|linebreaks }}</p>
-        <p>{{ subpanel.HUGOgene|linebreaks }}</p>
+        <h1>{{ subpanel.subpanelName }}</h1>
+        <p>{{ subpanel.subpanelID|linebreaks }}</p>
+        <p>{{ subpanel.username|linebreaks }}</p>
+        <p>{{ subpanel.subpanelVersion|linebreaks }}</p>
+        <p>
+            {% for hugoentry in subpanel.gene.all %}
+            {{ hugoentry.symbol }}
+            {% endfor %}
+        </p>
+        <p>
+            {% for parentpanel in subpanel.panel.all %}
+            {{ parentpanel.panelName }}
+            {% endfor %}
+        </p>
     </div>
 {% endblock %}
 

@@ -58,15 +58,23 @@ def panel_list(request):
 
 @login_required
 def subpanel_new(request):
-    if request.method == "POST":
-        form = SubpanelForm(request.POST)
+
+    if request.method == "POST" and 'update' in request.POST:
+
+        parent_panel = request.POST['panel']
+        form = SubpanelForm(request.POST, parent_panel=parent_panel)
+
+    elif request.method == "POST":
+        form = SubpanelForm(request.POST, parent_panel='None')
         if form.is_valid():
             subpanel = form.save(commit=False)
             subpanel.save()
             return redirect('/')
+
     else:
-        form = SubpanelForm()
-        title = "Add a new Subpanel"
+        form = SubpanelForm(parent_panel='None')
+
+    title = "Add a new Subpanel"
     context = {
             "title": title,
             'form': form

@@ -4,6 +4,7 @@
     <h1>Subpanel Information</h1>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
+        <button type="submit" name='update' class="save btn btn-default">update</button>
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
 {% endblock %}
