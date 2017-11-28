@@ -1,6 +1,4 @@
 from django.db import models
-from smart_selects.db_fields import ChainedForeignKey, \
-    ChainedManyToManyField, GroupedForeignKey
 
 
 class HUGOgene(models.Model):
@@ -13,7 +11,7 @@ class HUGOgene(models.Model):
 
 
 class Panel(models.Model):
-    panelName = models.CharField(max_length=20, blank=True, null=True)
+    panelName = models.CharField(max_length=20, blank=True, null=True, unique=True)
     panelID = models.CharField(max_length=20, blank=True, null=True)
     panelVersion = models.IntegerField(blank=True, null=True)
     username = models.CharField(max_length=20, blank=True, null=True)
@@ -24,7 +22,7 @@ class Panel(models.Model):
 
 
 class Subpanel(models.Model):
-    subpanelName = models.CharField(max_length=20, blank=True, null=True)
+    subpanelName = models.CharField(max_length=20, blank=True, null=True, unique=True)
     subpanelID = models.CharField(max_length=20, blank=True, null=True)
     subpanelVersion = models.IntegerField(blank=True, null=True)
     username = models.CharField(max_length=200, blank=True, null=True)

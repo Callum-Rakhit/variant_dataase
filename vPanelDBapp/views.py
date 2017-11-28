@@ -1,9 +1,25 @@
-import re # Needed for search function
-from django.db.models import Q # Needed for search function
-from .models import Panel, Subpanel, HUGOgene # import models
+import re  # Needed for search function
+from django.db.models import Q  # Needed for search function
+from .models import Panel, Subpanel, HUGOgene
 from django.contrib.auth.decorators import login_required
 from .forms import PanelForm, SubpanelForm, HUGOgeneLookupForm
 from django.shortcuts import render, get_object_or_404, redirect
+
+from dal import autocomplete
+
+
+class PanelAutocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        # Don't forget to filter out results depending on the visitor !
+        if not self.request.user.is_authenticated():
+            return Panel.objects.none()
+
+        qs = Panel.objects.all()
+
+        if self.q:
+            qs = qs.filter(name__istartswith=self.q)
+
+        return qs
 
 
 def home_page(request):
@@ -38,7 +54,7 @@ def panel_edit(request, pk):
     if request.method == "POST":
         form = PanelForm(request.POST, instance=panel)
         if form.is_valid():
-            panel = form.save(commit=False)
+            panel = form.save() # (commit=False) allows you to commit to the form without saving but breaks m2m saving
             panel.save()
             return redirect('panel_detail', pk=panel.pk)
     else:
@@ -65,14 +81,16 @@ def subpanel_new(request):
         form = SubpanelForm(request.POST, parent_panel=parent_panel)
 
     elif request.method == "POST":
-        form = SubpanelForm(request.POST, parent_panel='None')
+        parent_panel = request.POST['panel']
+        form = SubpanelForm(request.POST, parent_panel=parent_panel)
+
         if form.is_valid():
-            subpanel = form.save(commit=False)
+            subpanel = form.save()  # (commit=False) allows you to commit to the form without saving but breaks m2m saving
             subpanel.save()
             return redirect('/')
 
     else:
-        form = SubpanelForm(parent_panel='None')
+        form = SubpanelForm(parent_panel=None)
 
     title = "Add a new Subpanel"
     context = {
@@ -85,14 +103,23 @@ def subpanel_new(request):
 def subpanel_edit(request, pk):
     subpanel = get_object_or_404(Subpanel, pk=pk)
 
-    if request.method == "POST":
-        form = SubpanelForm(request.POST, instance=subpanel)
+    if request.method == "POST" and 'update' in request.POST:
+
+        parent_panel = request.POST['panel']
+        form = SubpanelForm(request.POST, parent_panel=parent_panel)
+
+    elif request.method == "POST":
+
+        parent_panel = request.POST['panel']
+        form = SubpanelForm(request.POST, parent_panel=parent_panel)
+
         if form.is_valid():
-            subpanel = form.save(commit=False)
+            subpanel = form.save()
             subpanel.save()
             return redirect('subpanel_detail', pk=subpanel.pk)
+
     else:
-        form = SubpanelForm(instance=subpanel)
+        form = SubpanelForm(parent_panel=None)
     return render(request, 'vPanelDBapp/subpanel_edit.html', {'form': form})
 
 
@@ -196,10 +223,7 @@ aims to search keywords within a model by testing the given search fields.
 '''
 
 
-# Search view
-
-
-def search(request):
+def search(request):  # Search view
     query_string = ''
     found_entries = None
     if ('q' in request.GET) and request.GET['q'].strip():
@@ -214,21 +238,3 @@ def search(request):
             'title': title,
         }
     return render(request, "vPanelDBapp/search_results.html", context)
-
-'''
-
-def search(request):
-    query_string = ''
-    found_entries = None
-    if ('q' in request.GET) and request.GET['q'].strip():
-        query_string = request.GET['q']
-
-        entry_query = get_query(query_string, ['title', 'body',])
-
-        found_entries = Entry.objects.filter(entry_query)
-
-    return render_to_response('search/search_results.html',
-                          { 'query_string': query_string, 'found_entries': found_entries },
-                          context_instance=RequestContext(request))
-
-'''

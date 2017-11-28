@@ -1,6 +1,9 @@
 Django~=1.10.0
 django-crispy-forms==1.6.1
 django-ajax-selects
-django-smart-selects==1.5.2
 django-static-jquery
+django-extensions
+django-autocomplete-light
+wheel==0.29.0
+django-ajax-selects
 

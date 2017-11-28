@@ -2,6 +2,7 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
+
     url(r'^$', view=views.home_page, name='home'),
 
     url(r'^panel_new/$', views.panel_new, name='panel_new'),
@@ -20,4 +21,5 @@ urlpatterns = [
     url(r'^hugogene/(?P<pk>\d+)/edit/$', views.hugogene_edit, name='hugogene_edit'),
 
     url(r'^search/$', view=views.search, name='Search'),
+
 ]

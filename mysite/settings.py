@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'vPanelDBapp',
     'ajax_select',
     'smart_selects',
+    'django_extensions',
+    'dal',
+    'dal_select2',
 ]
 
 MIDDLEWARE_CLASSES = (
