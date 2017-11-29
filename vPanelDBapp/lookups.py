@@ -1,5 +1,5 @@
-from ajax_select import register, LookupChannel
 from .models import Panel
+from ajax_select import register, LookupChannel
 
 
 @register('panel')

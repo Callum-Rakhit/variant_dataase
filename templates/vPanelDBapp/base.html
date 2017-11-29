@@ -2,10 +2,9 @@
 
 <html>
     <head>
-        <title>Virtual Panel Builder v0.2</title>
+        <title>Virtual Panel Builder</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{% static 'css/layout.css' %}">
     </head>
     </div>
@@ -39,7 +38,8 @@
         <div class="navbar-right">
             <ul class="nav navbar-nav">
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    <li>Logged in as {{request.user.permissiongroup}}
+                        <a href="{% url 'logout' %}">Logout</a></li>
                 {% else %}
                     <li><a href="{% url 'login' %}">Login</a></li>
                 {% endif %}

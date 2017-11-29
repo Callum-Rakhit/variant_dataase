@@ -23,7 +23,13 @@ class PanelForm(forms.ModelForm):
 
     class Meta:
         model = Panel
-        fields = ('panelName', 'panelID', 'username', 'panelVersion','gene')
+        fields = ('panelName', 'panelID', 'username', 'panelVersion', 'gene')
+        labels = {  # Add custom names to modelform labels
+            'panelName': 'Panel Name',
+            'panelID': 'Panel ID',
+            'username': 'Username',
+            'panelVersion': 'Panel Version'
+        }
 
 
 class SubpanelForm(forms.ModelForm):
@@ -31,6 +37,12 @@ class SubpanelForm(forms.ModelForm):
     class Meta:
         model = Subpanel
         fields = ('subpanelName', 'subpanelID', 'username', 'subpanelVersion', 'panel', 'gene')
+        labels = {  # Add custom names to modelform labels
+            'subpanelName': 'Subpanel Name',
+            'subpanelID': 'Subpanel ID',
+            'username': 'Username',
+            'subpanelVersion': 'Subpanel Version'
+        }
 
     def __init__(self, *args, **kwargs):
 
@@ -42,5 +54,3 @@ class SubpanelForm(forms.ModelForm):
             self.fields['gene'].queryset = HUGOgene.objects.filter(panel__id=int(parent_panel))
         else:
             pass
-
-
