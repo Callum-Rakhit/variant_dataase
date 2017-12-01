@@ -27,7 +27,6 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('vPanelDBapp.urls')),
     url(r'^ajax_select/', include(ajax_select_urls)),
-    url(r'^admin/', include(admin.site.urls)),
     url(r'^chaining/', include('smart_selects.urls')),
     url(r'^accounts/login/$', view=auth_views.login, name='login'),
     url(r'^accounts/logout/$', view=auth_views.logout, name='logout'),

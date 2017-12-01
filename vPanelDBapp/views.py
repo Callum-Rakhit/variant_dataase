@@ -5,27 +5,6 @@ from django.contrib.auth.decorators import login_required
 from .forms import PanelForm, SubpanelForm, HUGOgeneLookupForm
 from django.shortcuts import render, get_object_or_404, redirect
 
-'''
-
-from dal import autocomplete
-
-
-class PanelAutocomplete(autocomplete.Select2QuerySetView):
-    def get_queryset(self):
-        # Don't forget to filter out results depending on the visitor !
-        if not self.request.user.is_authenticated():
-            return Panel.objects.none()
-
-        qs = Panel.objects.all()
-
-        if self.q:
-            qs = qs.filter(name__istartswith=self.q)
-
-        return qs
-
-'''
-
-
 def home_page(request):
     title = "Panel Database"
     context = {

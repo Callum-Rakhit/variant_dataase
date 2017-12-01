@@ -1,20 +1,19 @@
-import autocomplete_light.shortcuts as al
-from models import Panel
+from models import Panel, Subpanel
 
-# This will generate a PanelAutocomplete class.
-al.register(Panel,  # Just like in ModelAdmin.search_fields.
-    search_fields=['^first_name', 'last_name'],
-    attrs={  # This will set the input placeholder attribute:
-        'placeholder': 'Other model name ?',
-        # This will set the yourlabs.Autocomplete.minimumCharacters
-        # options, the naming conversion is handled by jQuery.
-        'data-autocomplete-minimum-characters': 1,
-    },
-    # This will set the data-widget-maximum-values attribute on the
-    # widget container element, and will be set to
-    # yourlabs.Widget.maximumValues (jQuery handles the naming conversion).
-    widget_attrs={
-        'data-widget-maximum-values': 4,  # Enable modern-style widget !
-        'class': 'modern-style',
-    },
-)
+class PanelAutocomplete(autocomplete_light.AutocompleteGenericBase):
+    model = Panel
+    choices = (
+        Panel.objects.all(),
+    )
+    search_fields = (
+        ('^gene', )
+    )
+    limit_choices = 10
+    autocomplete_light.register(SubscriptionAppAutocomplete)
+
+class SubpanelAutocomplete(autocomplete_light.AutocompleteModelBase):
+    model = Subpanel
+    choices = Subpanel.objects.all()
+    search_fields = ('gene', )
+    limit_choices = 10
+    autocomplete_light.register(SubscriptionAutocomplete)

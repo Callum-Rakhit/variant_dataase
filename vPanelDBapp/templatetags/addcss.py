@@ -1,5 +1,4 @@
 from django import template
-from vPanelDBapp.models import PermissionGroup
 
 register = template.Library()
 

@@ -39,11 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'vPanelDBapp',
-    'ajax_select',
-    'smart_selects',
     'django_extensions',
-    'dal',
-    'dal_select2',
+
 ]
 
 MIDDLEWARE_CLASSES = (

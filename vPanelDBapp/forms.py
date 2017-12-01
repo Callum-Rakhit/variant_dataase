@@ -1,15 +1,5 @@
 from django import forms
 from .models import Panel, Subpanel, HUGOgene
-from ajax_select.fields import AutoCompleteSelectMultipleField
-
-
-class DocumentForm(forms.ModelForm):
-
-    class Meta:
-        model = Panel
-        fields = ('gene',)
-
-    tags = AutoCompleteSelectMultipleField('tags')
 
 
 class HUGOgeneLookupForm(forms.ModelForm):

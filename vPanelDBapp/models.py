@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 
 
-class PermissionGroup(models.Model):
+class PermissionGroup(models.Model):  # Used for creating permission groups, to vary access
     permissiongroup = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
