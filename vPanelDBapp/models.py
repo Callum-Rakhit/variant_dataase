@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
-
+from dal import autocomplete  # Required for the autocomplete light functionality
 
 class PermissionGroup(models.Model):  # Used for creating permission groups, to vary access
     permissiongroup = models.CharField(max_length=100, unique=True)
@@ -38,6 +38,10 @@ class Panel(models.Model):
 
     def __str__(self):
         return self.panelName
+
+    def save(self):
+        super(Panel, self).save()
+        LogChanges.objects.create(prevRemarks=self.remarks)
 
 
 class Subpanel(models.Model):

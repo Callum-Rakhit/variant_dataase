@@ -1,5 +1,4 @@
 Django~=1.10.0
-django-crispy-forms==1.6.1
 django-static-jquery
 django-extensions
 django-autocomplete-light
