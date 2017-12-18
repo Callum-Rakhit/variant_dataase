@@ -2,4 +2,5 @@ Django~=1.10.0
 django-static-jquery
 django-extensions
 django-autocomplete-light
+django-easy-select2
 

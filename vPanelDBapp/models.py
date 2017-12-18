@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
-from dal import autocomplete  # Required for the autocomplete light functionality
 
 class PermissionGroup(models.Model):  # Used for creating permission groups, to vary access
     permissiongroup = models.CharField(max_length=100, unique=True)
@@ -9,13 +8,13 @@ class PermissionGroup(models.Model):  # Used for creating permission groups, to 
         return self.permissiongroup
 
 
-class CustomUserManager(UserManager):
+class CustomUserManager(UserManager):  # UserManager is a premade Django model
    def get_by_natural_key(self, username):
        case_insensitive_username_field = '{}__iexact'.format(self.model.USERNAME_FIELD)
        return self.get(**{case_insensitive_username_field: username})
 
 
-class User(AbstractUser):
+class User(AbstractUser):  # AbstractManager is a premade Django model
    permissiongroup = models.ForeignKey(PermissionGroup, default=1, on_delete=models.PROTECT)
    objects = CustomUserManager()
 
@@ -35,13 +34,82 @@ class Panel(models.Model):
     panelVersion = models.IntegerField(blank=True, null=True)
     username = models.CharField(max_length=20, blank=True, null=True)
     gene = models.ManyToManyField(HUGOgene, blank=True)
+    DIAGNOSTIC = 'DI'
+    RESEARCH = 'RE'
+    panelType = (
+        (DIAGNOSTIC, 'Diagnostic'),
+        (RESEARCH, 'Research'),
+    )
+    panelTypes = models.CharField(
+        max_length=2,
+        choices=panelType,
+        default=DIAGNOSTIC,
+    )
+
+    def __str__(self):
+        return self.panelName
+
+'''
+
+    def save(self, force_insert=False, force_update=False, using=None):
+        super(Panel, self).save()
+        LogChanges.objects.create(prevUsername=self.username)
+
+    def save(self, force_insert=False, force_update=False, using=None):
+        super(Panel, self).save()
+        LogChanges.objects.create(prevPanelName=self.panelName)
+
+    def save(self, force_insert=False, force_update=False, using=None):
+        super(Panel, self).save()
+        LogChanges.objects.create(prevPanelID=self.panelID)
+
+    def save(self, force_insert=False, force_update=False, using=None):
+        super(Panel, self).save()
+        LogChanges.objects.create(prevPanelVersion=self.panelVersion)
+
+    def save(self, force_insert=False, force_update=False, using=None):
+        super(Panel, self).save()
+        LogChanges.objects.create(prevGene=self.gene)
+
+    def save(self, force_insert=False, force_update=False, using=None):
+        super(Panel, self).save()
+        LogChanges.objects.create(prevPanelTypes=self.panelTypes)
+
+'''
+
+class LogChanges(models.Model):  # Table to save changes to panels
+    createdAt = models.DateTimeField(auto_now_add=True)
+    prevUsername = models.CharField(max_length=20, blank=True, null=True)
 
     def __str__(self):
         return self.panelName
 
     def save(self):
         super(Panel, self).save()
-        LogChanges.objects.create(prevRemarks=self.remarks)
+        LogChanges.objects.create(prevUsername=self.username)
+
+    def __str__(self):
+        return self.prevUsername
+
+'''
+
+    prevPanelName = models.CharField(max_length=20, blank=True, null=True, unique=True)
+    prevPanelID = models.CharField(max_length=20, blank=True, null=True)
+    prevPanelVersion = models.IntegerField(blank=True, null=True)
+    prevGene = models.ManyToManyField(HUGOgene, blank=True)
+    DIAGNOSTIC = 'DI'
+    RESEARCH = 'RE'
+    panelType = (
+        (DIAGNOSTIC, 'Diagnostic'),
+        (RESEARCH, 'Research'),
+    )
+    prevPanelTypes = models.CharField(max_length=2,
+                                      choices = panelType,
+                                      default = DIAGNOSTIC,
+                                      )
+
+'''
+
 
 
 class Subpanel(models.Model):

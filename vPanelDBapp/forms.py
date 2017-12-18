@@ -1,5 +1,5 @@
 from django import forms
-from .models import Panel, Subpanel, HUGOgene
+from .models import Panel, Subpanel, HUGOgene, LogChanges
 
 
 class HUGOgeneLookupForm(forms.ModelForm):
@@ -13,13 +13,21 @@ class PanelForm(forms.ModelForm):
 
     class Meta:
         model = Panel
-        fields = ('panelName', 'panelID', 'username', 'panelVersion', 'gene')
+        fields = ('panelName', 'panelID', 'username', 'panelVersion', 'gene', 'panelTypes')
         labels = {  # Add custom names to modelform labels
             'panelName': 'Panel Name',
             'panelID': 'Panel ID',
             'username': 'Username',
-            'panelVersion': 'Panel Version'
+            'panelVersion': 'Panel Version',
+            'panelTypes': 'Panel Type',
         }
+
+
+class LogForm(forms.ModelForm):
+
+    class Meta:
+        model = LogChanges
+        fields = '__all__'
 
 
 class SubpanelForm(forms.ModelForm):

@@ -2,13 +2,14 @@ from django import forms
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm
-from .models import HUGOgene, Panel, Subpanel, User, PermissionGroup
+from .models import HUGOgene, Panel, Subpanel, User, PermissionGroup, LogChanges
 
 
 admin.site.register(Panel)
 admin.site.register(HUGOgene)
 admin.site.register(Subpanel)
 admin.site.register(PermissionGroup)
+admin.site.register(LogChanges)
 
 
 class MyUserChangeForm(UserChangeForm):

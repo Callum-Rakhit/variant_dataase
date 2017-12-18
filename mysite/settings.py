@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'vPanelDBapp',
     'django_extensions',
-
+    'easy_select2',
 ]
 
 MIDDLEWARE_CLASSES = (
@@ -99,7 +99,7 @@ LOGOUT_URL = '/logout/'
 LANGUAGE_CODE = 'en-GB'
 TIME_ZONE = 'Europe/London'
 
-# Other bits
+# Other javascript bits
 
 USE_DJANGO_JQUERY = True
 JQUERY_URL = False

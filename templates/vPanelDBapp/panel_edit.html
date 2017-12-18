@@ -1,6 +1,6 @@
 {% extends 'vPanelDBapp/base.html' %}
-{% load addcss %}
 
+{% load addcss %}
 
 {% block content %}
 
@@ -12,11 +12,87 @@
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
 
+<!--
+
+<script>$(document).ready(function() {$('.js-example-basic-multiple').select2();});</script>
+
+<select class="js-example-basic-multiple js-states form-control select2-hidden-accessible" multiple="" data-select2-id="3" tabindex="-1" aria-hidden="true">
+  <optgroup label="Alaskan/Hawaiian Time Zone" data-select2-id="74">
+    <option value="AK" data-select2-id="75">Alaska</option>
+    <option value="HI" data-select2-id="76">Hawaii</option>
+  </optgroup>
+  <optgroup label="Pacific Time Zone" data-select2-id="77">
+    <option value="CA" data-select2-id="78">California</option>
+    <option value="NV" data-select2-id="79">Nevada</option>
+    <option value="OR" data-select2-id="80">Oregon</option>
+    <option value="WA" data-select2-id="81">Washington</option>
+  </optgroup>
+  <optgroup label="Mountain Time Zone" data-select2-id="82">
+    <option value="AZ" data-select2-id="83">Arizona</option>
+    <option value="CO" data-select2-id="84">Colorado</option>
+    <option value="ID" data-select2-id="85">Idaho</option>
+    <option value="MT" data-select2-id="86">Montana</option>
+    <option value="NE" data-select2-id="87">Nebraska</option>
+    <option value="NM" data-select2-id="88">New Mexico</option>
+    <option value="ND" data-select2-id="89">North Dakota</option>
+    <option value="UT" data-select2-id="90">Utah</option>
+    <option value="WY" data-select2-id="91">Wyoming</option>
+  </optgroup>
+  <optgroup label="Central Time Zone" data-select2-id="92">
+    <option value="AL" data-select2-id="93">Alabama</option>
+    <option value="AR" data-select2-id="94">Arkansas</option>
+    <option value="IL" data-select2-id="95">Illinois</option>
+    <option value="IA" data-select2-id="96">Iowa</option>
+    <option value="KS" data-select2-id="97">Kansas</option>
+    <option value="KY" data-select2-id="98">Kentucky</option>
+    <option value="LA" data-select2-id="99">Louisiana</option>
+    <option value="MN" data-select2-id="100">Minnesota</option>
+    <option value="MS" data-select2-id="101">Mississippi</option>
+    <option value="MO" data-select2-id="102">Missouri</option>
+    <option value="OK" data-select2-id="103">Oklahoma</option>
+    <option value="SD" data-select2-id="104">South Dakota</option>
+    <option value="TX" data-select2-id="105">Texas</option>
+    <option value="TN" data-select2-id="106">Tennessee</option>
+    <option value="WI" data-select2-id="107">Wisconsin</option>
+  </optgroup>
+  <optgroup label="Eastern Time Zone" data-select2-id="108">
+    <option value="CT" data-select2-id="109">Connecticut</option>
+    <option value="DE" data-select2-id="110">Delaware</option>
+    <option value="FL" data-select2-id="111">Florida</option>
+    <option value="GA" data-select2-id="112">Georgia</option>
+    <option value="IN" data-select2-id="113">Indiana</option>
+    <option value="ME" data-select2-id="114">Maine</option>
+    <option value="MD" data-select2-id="115">Maryland</option>
+    <option value="MA" data-select2-id="116">Massachusetts</option>
+    <option value="MI" data-select2-id="117">Michigan</option>
+    <option value="NH" data-select2-id="118">New Hampshire</option>
+    <option value="NJ" data-select2-id="119">New Jersey</option>
+    <option value="NY" data-select2-id="120">New York</option>
+    <option value="NC" data-select2-id="121">North Carolina</option>
+    <option value="OH" data-select2-id="122">Ohio</option>
+    <option value="PA" data-select2-id="123">Pennsylvania</option>
+</select>
+
+<span class="select2 select2-container select2-container--default"
+      dir="ltr" data-select2-id="4" style="width: 100%;">
+    <span class="selection">
+        <span class="select2-selection select2-selection--multiple"
+              role="combobox" aria-haspopup="true"
+              aria-expanded="false" tabindex="-1">
+            <ul class="select2-selection__rendered">
+            <li class="select2-search select2-search--inline">
+                <input class="select2-search__field" tabindex="0" autocomplete="off"
+                       autocorrect="off" autocapitalize="none" spellcheck="false"
+                       role="textbox" aria-autocomplete="list" placeholder=""
+                       style="width: 0.75em;" type="search"></li></ul></span></span>
+    <span class="dropdown-wrapper" aria-hidden="true"></span></span>
+
+-->
+
 {% else %}
     You are not authorised to add new panels
 {% endif %}
 
 {% endblock %}
-
 
 {% include 'blog/bootstrap_core.html' %}
