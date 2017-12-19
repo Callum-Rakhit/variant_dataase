@@ -49,7 +49,7 @@ class Panel(models.Model):
     def __str__(self):
         return self.panelName
 
-'''
+
 
     def save(self, force_insert=False, force_update=False, using=None):
         super(Panel, self).save()
