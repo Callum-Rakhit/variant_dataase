@@ -27,7 +27,13 @@ class LogForm(forms.ModelForm):
 
     class Meta:
         model = LogChanges
-        fields = '__all__'
+        fields = ('prevUsername', 'prevPanelName', 'prevPanelID', 'prevPanelVersion')
+        labels = {  # Add custom names to modelform labels
+            'prevUsername': 'Previous Username',
+            'prevPanelName': 'Previous Panel Name',
+            'prevPanelID': 'Previous Panel ID',
+            'prevPanelVersion': 'Previous Panel Version',
+        }
 
 
 class SubpanelForm(forms.ModelForm):

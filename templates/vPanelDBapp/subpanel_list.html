@@ -1,7 +1,9 @@
 {% extends "vPanelDBapp/base.html" %}
 
 {% block content %}
+
 	{% for subpanel in subpanels %}
+
 		<div class="subpanel">
             <h1><a href="{% url 'subpanel_edit' pk=subpanel.pk %}">{{ subpanel.subpanelName }}</a></h1>
             <p>{{ subpanel.subpanelID|linebreaks }}</p>
@@ -18,7 +20,9 @@
             {% endfor %}
             </p>
 		</div>
+
 	{% endfor %}
+
 {% endblock content %}
 
 {% include 'blog/bootstrap_core.html' %}

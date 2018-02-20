@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import PanelForm, SubpanelForm, HUGOgeneLookupForm
 from django.shortcuts import render, get_object_or_404, redirect
 
+
 def home_page(request):
     title = "Panel Database"
     context = {
@@ -37,7 +38,7 @@ def panel_edit(request, pk):
     if request.method == "POST":
         form = PanelForm(request.POST, instance=panel)
         if form.is_valid():
-            panel = form.save() # (commit=False) allows you to commit to the form without saving but breaks m2m saving
+            panel = form.save()  # (commit=False) allows you to commit to the form without saving but breaks m2m saving
             panel.save()
             return redirect('panel_detail', pk=panel.pk)
     else:
@@ -68,7 +69,7 @@ def subpanel_new(request):
         form = SubpanelForm(request.POST, parent_panel=parent_panel)
 
         if form.is_valid():
-            subpanel = form.save()  # (commit=False) allows you to commit to the form without saving but breaks m2m saving
+            subpanel = form.save()  # (commit=False) allows you to commit without saving, but breaks m2m saving
             subpanel.save()
             return redirect('/')
 
@@ -81,6 +82,7 @@ def subpanel_new(request):
             'form': form
     }
     return render(request, "vPanelDBapp/subpanel_edit.html", context)
+
 
 @login_required
 def subpanel_edit(request, pk):
@@ -159,7 +161,9 @@ def hugogene_list(request):
     hugogene = HUGOgene.objects.all()
     return render(request, 'vPanelDBapp/hugogene_list.html', {'hugogenes': hugogene})
 
+
 # https://www.julienphalip.com/blog/adding-search-to-a-django-site-in-a-snap/
+
 
 def normalize_query(query_string,
                     findterms=re.compile(r'"([^"]+)"|(\S+)').findall,
@@ -168,7 +172,6 @@ def normalize_query(query_string,
 
 
 ''' 
-
 Splits the query string in individual keywords, to remove unnecessary spaces
 and group quoted words together.
 
@@ -176,7 +179,6 @@ Example:
 
 >>> normalize_query('  some random  words "with   quotes  " and   spaces')
 ['some', 'random', 'words', 'with quotes', 'and', 'spaces']
-
 '''
 
 
@@ -199,10 +201,8 @@ def get_query(query_string, search_fields):
 
 
 '''
-
 Returns a query that is a combination of Q objects. That combination
 aims to search keywords within a model by testing the given search fields.
-
 '''
 
 
@@ -211,8 +211,7 @@ def search(request):  # Search view
     found_entries = None
     if ('q' in request.GET) and request.GET['q'].strip():
         query_string = request.GET['q']
-        hugogene_query =  get_query(query_string, ['symbol', 'ensemblGeneID',
-                                                   'locationSortable'])
+        hugogene_query = get_query(query_string, ['symbol', 'ensemblGeneID', 'locationSortable'])
         hugogene_entries = HUGOgene.objects.filter(hugogene_query)
         title = "Search Results"
         context = {

@@ -1,5 +1,6 @@
 from models import Panel, Subpanel
 
+
 class PanelAutocomplete(autocomplete_light.AutocompleteGenericBase):
     model = Panel
     choices = (
@@ -10,6 +11,7 @@ class PanelAutocomplete(autocomplete_light.AutocompleteGenericBase):
     )
     limit_choices = 10
     autocomplete_light.register(SubscriptionAppAutocomplete)
+
 
 class SubpanelAutocomplete(autocomplete_light.AutocompleteModelBase):
     model = Subpanel

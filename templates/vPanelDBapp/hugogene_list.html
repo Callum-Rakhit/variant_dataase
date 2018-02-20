@@ -1,13 +1,15 @@
 {% extends "vPanelDBapp/base.html" %}
 
 {% block content %}
-	{% for hugogene in hugogenes %}
+
+	{% for hugogene in hugogenes %} <!-- load the form for listing genes -->
 		<div class="hugogene">
 			<h1><a href="{% url 'hugogene_detail' pk=hugogene.pk %}">{{ hugogene.symbol }}</a></h1>
             <p>{{ hugogene.ensemblGeneID|linebreaks }}</p>
             <p>{{ hugogene.locationSortable|linebreaks }}</p>
 		</div>
 	{% endfor %}
+
 {% endblock content %}
 
 {% include 'blog/bootstrap_core.html' %}

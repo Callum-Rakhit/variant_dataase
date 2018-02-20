@@ -1,6 +1,7 @@
 {% extends "vPanelDBapp/base.html" %}
 
 {% block content %}
+
     <div class="subpanel">
         <h1>{{ subpanel.subpanelName }}</h1>
         <p>{{ subpanel.subpanelID|linebreaks }}</p>
@@ -17,6 +18,7 @@
             {% endfor %}
         </p>
     </div>
+
 {% endblock %}
 
 {% include 'blog/bootstrap_core.html' %}

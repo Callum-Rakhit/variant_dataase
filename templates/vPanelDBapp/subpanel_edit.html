@@ -1,17 +1,17 @@
 {% extends 'vPanelDBapp/base.html' %}
 {% load addcss %}
-
+{% load static %}
 
 {% block content %}
 
 {% if request.user|has_group:"superuser, usermax, usermin" %}
 
-    <h1>Subpanel Information</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" name='update' class="save btn btn-default">Update</button>
-        <button type="submit" class="save btn btn-default">Save</button>
-    </form>
+<h1>Subpanel Information</h1>
+<form method="POST" class="post-form">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" name='update' class="save btn btn-default">Update</button>
+    <button type="submit" class="save btn btn-default">Save</button>
+</form>
 
 {% else %}
     You are not authorised to add new panels

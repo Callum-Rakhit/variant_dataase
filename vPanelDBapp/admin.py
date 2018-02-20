@@ -5,11 +5,8 @@ from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 from .models import HUGOgene, Panel, Subpanel, User, PermissionGroup, LogChanges
 
 
-admin.site.register(Panel)
-admin.site.register(HUGOgene)
-admin.site.register(Subpanel)
-admin.site.register(PermissionGroup)
-admin.site.register(LogChanges)
+class TimeAdmin(admin.ModelAdmin):
+    readonly_fields = ('createdAt',)
 
 
 class MyUserChangeForm(UserChangeForm):
@@ -19,7 +16,6 @@ class MyUserChangeForm(UserChangeForm):
 
 
 class MyUserCreationForm(UserCreationForm):
-
     permissiongroup = forms.ModelChoiceField(queryset=PermissionGroup.objects.all())
 
     class Meta(UserCreationForm.Meta):
@@ -28,7 +24,6 @@ class MyUserCreationForm(UserCreationForm):
 
 
 class MyUserAdmin(UserAdmin):
-
     form = MyUserChangeForm
     add_form = MyUserCreationForm
     fieldsets = UserAdmin.fieldsets + (
@@ -42,4 +37,10 @@ class MyUserAdmin(UserAdmin):
          ),
     )
 
+
+admin.site.register(HUGOgene)
+admin.site.register(Panel)
+admin.site.register(Subpanel)
 admin.site.register(User, MyUserAdmin)
+admin.site.register(PermissionGroup)
+admin.site.register(LogChanges, TimeAdmin)

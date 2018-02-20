@@ -30,4 +30,5 @@ urlpatterns = [
     url(r'^chaining/', include('smart_selects.urls')),
     url(r'^accounts/login/$', view=auth_views.login, name='login'),
     url(r'^accounts/logout/$', view=auth_views.logout, name='logout'),
+    url(r'^select2/', include('django_select2.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -3,4 +3,6 @@ django-static-jquery
 django-extensions
 django-autocomplete-light
 django-easy-select2
+django-select2
+django-bower
 
