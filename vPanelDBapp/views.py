@@ -81,7 +81,7 @@ def subpanel_new(request):
             "title": title,
             'form': form
     }
-    return render(request, "vPanelDBapp/subpanel_edit.html", context)
+    return render(request, "vPanelDBapp/subpanel_edit.html", context)  # should redirect to editable subpanel form
 
 
 @login_required
@@ -101,7 +101,7 @@ def subpanel_edit(request, pk):
         if form.is_valid():
             subpanel = form.save()
             subpanel.save()
-            return redirect('subpanel_detail', pk=subpanel.pk)
+            return redirect('subpanel_detail', pk=subpanel.pk)  # should redirect to editable subpanel form
 
     else:
         form = SubpanelForm(parent_panel=None)

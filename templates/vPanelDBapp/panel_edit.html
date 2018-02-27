@@ -5,7 +5,7 @@
 
 {% block content %}
 
-{% if request.user|has_group:"superuser, usermax" %}
+{% if request.user|has_group:"superuser, usermax" %} <!-- Only user in these permission groups can edit -->
 
     <h1>Panel Information</h1>
     <form method="POST" class="post-form">{% csrf_token %}
@@ -15,7 +15,7 @@
 
 {% else %}
 
-    You are not authorised to add new panels
+    You are not authorised to add new panels.
 
 {% endif %}
 

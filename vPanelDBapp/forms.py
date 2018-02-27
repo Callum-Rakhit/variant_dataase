@@ -45,7 +45,8 @@ class SubpanelForm(forms.ModelForm):
             'subpanelName': 'Subpanel Name',
             'subpanelID': 'Subpanel ID',
             'username': 'Username',
-            'subpanelVersion': 'Subpanel Version'
+            'subpanelVersion': 'Subpanel Version',
+            'panel': 'Panel (Select then click the "Update" button in the bottom right)'
         }
 
     def __init__(self, *args, **kwargs):

@@ -21,7 +21,7 @@ class User(AbstractUser):  # AbstractManager is a premade Django model
     objects = CustomUserManager()
 
 
-class HUGOgene(models.Model):  # This is the model for the omported HUGO genes
+class HUGOgene(models.Model):  # This is the model for the imported HUGO genes
     ensemblGeneID = models.CharField(max_length=50, blank=True, null=True)
     symbol = models.CharField(max_length=10)
     locationSortable = models.CharField(max_length=10)

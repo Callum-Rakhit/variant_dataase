@@ -3,6 +3,7 @@
 {% block content %}
 
 	{% for panel in panels %}
+
 		<div class="panel">
 			<h1><a href="{% url 'panel_edit' pk=panel.pk %}">{{ panel.panelName }}</a></h1>
             <p>{{ panel.panelID|linebreaks }}</p>
