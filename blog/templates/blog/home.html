@@ -49,35 +49,40 @@
             </div>
 
 
-{#    change the below urls to a sensible one#}
+{#    change the below url to a sensible one#}
     <form action="/team_name_url/" method="post">
-        <label for="team_name">Patient name</label>
+        <label for="name_field">Patient name</label>
         <input id="name_field" type="text" name="name_field" value="">
 
-        <label for="team_name">Patient age</label>
+        <label for="age_field">Patient age</label>
         <input id="age_field" type="text" name="age_field" value="">
 
-        #Proband? Check if yes
-        choices=[('yes','Yes'),('no','No')]
-        proband=like.ChoiceField(choices=choices, widget=forms.RadioSelect)
+        <label for="is_proband">Is this patient the proband?</label>
+        <input type="radio" id="true" name="is_proband" value="true">
+        <label for="Yes">Yes</label><br>
+        <input type="radio" id="false" name="is_proband" value="false">
+        <label for="No">No</label><br>
 
-        #Affected relative? (Yes or no)
-        choices=[('yes','Yes'),('no','No')]
-        relative_affected=like.ChoiceField(choices=choices, widget=forms.RadioSelect)
+        <label for="aff_relative">Does the patient have an affected relative?</label>
+        <input type="radio" id="true" name="aff_relative" value="true">
+        <label for="Yes">Yes</label><br>
+        <input type="radio" id="false" name="aff_relative" value="false">
+        <label for="No">No</label><br>
 
-        <label for="team_name">Stage</label>
+
+        <label for="stage_field">Stage</label>
         <input id="stage_field" type="text" name="stage_field" value="">
 
-        <label for="team_name">Description</label>
+        <label for="desc_field">Description</label>
         <input id="desc_field" type="text" name="desc_field" value="">
 
-        <label for="team_name">Variant cDNA</label>
+        <label for="cdna_field">Variant cDNA</label>
         <input id="cdna_field" type="text" name="cdna_field" value="">
 
-        <label for="team_name">Variant protein</label>
+        <label for="protein_field">Variant protein</label>
         <input id="protein_field" type="text" name="protein_field" value="">
 
-        <label for="team_name">Variant genome</label>
+        <label for="var_genome_field">Variant genome</label>
         <input id="var_genome_field" type="text" name="var_genome_field" value="">
 
         <input type="submit" value="OK">
@@ -86,7 +91,10 @@
 
     <div>
         <div><h1>Or, batch-upload variants from a spreadsheet</h1></div>
-
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="uploaded_tsv" id="uploaded_tsv">
+        <input type="submit" value="Upload a tab-delimited file" name="submit">
+        </form>
     </div>
 
     </div>
