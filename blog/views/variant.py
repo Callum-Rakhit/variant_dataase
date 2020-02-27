@@ -13,7 +13,7 @@ class VariantView(generic.DetailView):
 
 class VariantCreate(LoginRequiredMixin, CreateView):
     model = Variant
-    fields = ['name', 'age', 'proband_affected', 'relatives', 'stage', 'description', 'sequencer',
+    fields = ['name_field', 'age_field', 'is_proband', 'aff_relative', 'stage_field', 'desc_field', 'sequencer',
     'variant_cDNA', 'variant_protein', 'variant_genome', 'pathogenicity_code', 'evidence']
     template_name = 'variant/create_variant.html'
     login_url = reverse_lazy('login')
@@ -25,7 +25,7 @@ class VariantCreate(LoginRequiredMixin, CreateView):
 
 class VariantUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Variant
-    fields = ['name', 'age', 'proband_affected', 'relatives', 'stage', 'description', 'sequencer',
+    fields = ['name_field', 'age_field', 'is_proband', 'aff_relative', 'stage_field', 'desc_field', 'sequencer',
     'variant_cDNA', 'variant_protein', 'variant_genome', 'pathogenicity_code', 'evidence']
     template_name = 'variant/create_variant.html'
     login_url = reverse_lazy('login')

@@ -4,13 +4,14 @@ from django.urls import reverse
 
 
 class Variant(models.Model):
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=80)
-    age	= models.PositiveIntegerField()
-    proband_affected = models.CharField(max_length=80)
-    relatives = models.CharField(max_length=80)
-    stage = models.PositiveIntegerField()
-    description = models.CharField(max_length=80)
+    name_field = models.CharField(max_length=80)
+    age_field	= models.PositiveIntegerField()
+    is_proband = models.CharField(max_length=80)
+    aff_relative = models.CharField(max_length=80)
+    stage_field = models.PositiveIntegerField()
+    desc_field = models.CharField(max_length=80)
     sequencer = models.CharField(max_length=80)
     variant_cDNA = models.CharField(max_length=80)
     variant_protein = models.CharField(max_length=80)
