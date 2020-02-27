@@ -3,6 +3,7 @@ from django.urls import path
 from blog.views.comment import CommentCreate
 from blog.views.home import home
 from blog.views.post import PostView, PostCreate, PostUpdate, PostDelete
+from blog.views.variant import VariantView, VariantCreate, VariantUpdate, VariantDelete
 
 app_name = 'blog'
 urlpatterns = [
@@ -19,5 +20,9 @@ urlpatterns = [
     # ex: /blog/post/5/delete/
     path('post/<int:pk>/delete/', PostDelete.as_view(), name='delete_post'),
     # ex: /blog/post/5/comment/
-    path('post/<int:pk>/comment/', CommentCreate.as_view(), name='create_comment')
+    path('variant/<int:pk>/comment/', CommentCreate.as_view(), name='create_comment'),
+    # add variant urls
+    path('variant/create/', VariantCreate.as_view(), name='create_variant'),
+    path('variant/create/<int:pk>/update', VariantUpdate.as_view(), name='update_variant'),
+    path('variant/<int:pk>/delete/', VariantDelete.as_view(), name='delete_variant')
 ]

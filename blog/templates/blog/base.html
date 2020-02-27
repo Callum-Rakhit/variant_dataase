@@ -45,6 +45,12 @@
                     <li class="active"><a href="{% url 'blog:create_post' %}">New Post</a></li>
                 </ul>
             {% endif %}
+                        <!-- show new post only if user is authenticated -->
+                        {% if user.is_authenticated %}
+                        <ul class="nav navbar-nav ">
+                            <li class="active"><a href="{% url 'blog:create_variant' %}">New Vairant</a></li>
+                        </ul>
+                    {% endif %}
             <!-- show sign out only if user is authenticated -->
             {% if user.is_authenticated %}
                 <ul class="nav navbar-nav ">
