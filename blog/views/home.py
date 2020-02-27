@@ -1,10 +1,22 @@
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.shortcuts import render
+from django.core.exceptions import ValidationError
 
 from blog.models.post import Post
 
 NUM_OF_POSTS = 5
+
+def csv_content_validator(csv_file):
+    csv_file_content = csv_file.read()
+    validation_error_messages = []
+    # ...
+    # Validate contents of each line
+    # Add specific messages to a list variable called
+    # `validation_error_messages` for anything that isn't correct.
+    # ...
+    if validation_error_messages:
+        raise ValidationError(" ".join(validation_error_messages))
 
 def home(request, username=None):
     first_name = ''
