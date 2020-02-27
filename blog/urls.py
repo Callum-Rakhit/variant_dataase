@@ -1,10 +1,23 @@
-from django.conf.urls import url
-from . import views
+from django.urls import path
 
+from blog.views.comment import CommentCreate
+from blog.views.home import home
+from blog.views.post import PostView, PostCreate, PostUpdate, PostDelete
 
+app_name = 'blog'
 urlpatterns = [
-    url(r'^$', views.post_list, name='post_list'),
-    url(r'^post/(?P<pk>[0-9]+)/$', views.post_detail, name='post_detail'),
-    url(r'^post/new/$', views.post_new, name='post_new'),
-    url(r'^post/(?P<pk>[0-9]+)/edit/$', views.post_edit, name='post_edit'),
+    # ex: /blog/
+    path('', home, name='home'),
+    # ex: /blog/dusan
+    path('<str:username>', home, name='user_posts'),
+    # ex: /blog/post/5/
+    path('post/<int:pk>/', PostView.as_view(), name='post'),
+    # ex: /blog/post/create/
+    path('post/create/', PostCreate.as_view(), name='create_post'),
+    # ex: /blog/post/5/update/
+    path('post/create/<int:pk>/update', PostUpdate.as_view(), name='update_post'),
+    # ex: /blog/post/5/delete/
+    path('post/<int:pk>/delete/', PostDelete.as_view(), name='delete_post'),
+    # ex: /blog/post/5/comment/
+    path('post/<int:pk>/comment/', CommentCreate.as_view(), name='create_comment')
 ]
