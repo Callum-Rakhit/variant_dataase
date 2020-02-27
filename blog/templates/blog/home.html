@@ -1,3 +1,4 @@
+
 {% extends "blog/base.html" %}
 
 {% block content %}
@@ -11,36 +12,82 @@
         {% endif %}
 
         <!-- Show List of Posts -->
-        <div class="starter-template">
-            {% for post in posts %}
-                <div class="panel">
-                    <div class="panel-heading">
-                        <h1><a href="{% url 'blog:post' post.pk %}">{{ post.title }}</a></h1>
-                        <div> Created {{ post.pub_date }} by <a
-                                href="{% url 'blog:user_posts' post.user.username %}">{{ post.user.username }}</a>
-                        </div>
-                    </div>
-                    <h3 class="panel-body"> {{ post.body }}</h3>
-                </div>
-            {% endfor %}
-        </div>
+{#        <div class="starter-template">#}
+{#            {% for post in posts %}#}
+{#                <div class="panel">#}
+{#                    <div class="panel-heading">#}
+{#                        <h1><a href="{% url 'blog:post' post.pk %}">{{ post.title }}</a></h1>#}
+{#                        <div> Created {{ post.pub_date }} by <a#}
+{#                                href="{% url 'blog:user_posts' post.user.username %}">{{ post.user.username }}</a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <h3 class="panel-body"> {{ post.body }}</h3>#}
+{#                </div>#}
+{#            {% endfor %}#}
+{#        </div>#}
 
         <!-- Pagination -->
-        <div class="pagination">
-            {% if posts.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ posts.previous_page_number }}">previous</a>
-            {% endif %}
+{#        <div class="pagination">#}
+{#            {% if posts.has_previous %}#}
+{#                <a href="?page=1">&laquo; first</a>#}
+{#                <a href="?page={{ posts.previous_page_number }}">previous</a>#}
+{#            {% endif %}#}
+{##}
+{#            {% if posts.paginator.num_pages != 1 %}#}
+{#                Page {{ posts.number }} of {{ posts.paginator.num_pages }}.#}
+{#            {% endif %}#}
+{##}
+{#            {% if posts.has_next %}#}
+{#                <a href="?page={{ posts.next_page_number }}">next</a>#}
+{#                <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>#}
+{#            {% endif %}#}
+{#        </div>#}
 
-            {% if posts.paginator.num_pages != 1 %}
-                Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
-            {% endif %}
+    <div>
+            <div>
+                <h1>Enter a single patient variant at a time</h1>
+            </div>
 
-            {% if posts.has_next %}
-                <a href="?page={{ posts.next_page_number }}">next</a>
-                <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
-            {% endif %}
+
+{#    change the below urls to a sensible one#}
+    <form action="/team_name_url/" method="post">
+        <label for="team_name">Patient name</label>
+        <input id="name_field" type="text" name="name_field" value="">
+
+        <label for="team_name">Patient age</label>
+        <input id="age_field" type="text" name="age_field" value="">
+
+        #Proband? Check if yes
+        choices=[('yes','Yes'),('no','No')]
+        proband=like.ChoiceField(choices=choices, widget=forms.RadioSelect)
+
+        #Affected relative? (Yes or no)
+        choices=[('yes','Yes'),('no','No')]
+        relative_affected=like.ChoiceField(choices=choices, widget=forms.RadioSelect)
+
+        <label for="team_name">Stage</label>
+        <input id="stage_field" type="text" name="stage_field" value="">
+
+        <label for="team_name">Description</label>
+        <input id="desc_field" type="text" name="desc_field" value="">
+
+        <label for="team_name">Variant cDNA</label>
+        <input id="cdna_field" type="text" name="cdna_field" value="">
+
+        <label for="team_name">Variant protein</label>
+        <input id="protein_field" type="text" name="protein_field" value="">
+
+        <label for="team_name">Variant genome</label>
+        <input id="var_genome_field" type="text" name="var_genome_field" value="">
+
+        <input type="submit" value="OK">
+    </form>
         </div>
+
+    <div>
+        <div><h1>Or, batch-upload variants from a spreadsheet</h1></div>
+
+    </div>
 
     </div>
 {% endblock content %}

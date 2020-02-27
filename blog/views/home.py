@@ -4,6 +4,7 @@ from django.shortcuts import render
 
 from blog.models.post import Post
 
+
 NUM_OF_POSTS = 5
 
 
