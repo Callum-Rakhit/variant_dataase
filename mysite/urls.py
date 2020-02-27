@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
+from django.views.generic.base import RedirectView # Allows us to redirect incorrect urls to the home page
 
 from blog.views.register import RegisterView
 
@@ -26,4 +27,5 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(next_page='blog:home')),
     path('register/', RegisterView.as_view(), name='register'),
     path('', include('django.contrib.auth.urls'))
+    # url(r'^.*$', RedirectView.as_view(url='blog/', permanent=False), name='index')
 ]
