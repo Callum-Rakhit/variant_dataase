@@ -1,8 +1,7 @@
-Django~=1.10.0
+Django~=2.2.0
 django-static-jquery
 django-extensions
 django-autocomplete-light
 django-easy-select2
 django-select2
 django-bower
-
