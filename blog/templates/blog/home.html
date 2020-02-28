@@ -51,6 +51,7 @@
 
 {#    change the below url to a sensible one#}
     <form action="/example_url/" method="post">
+        {% csrf_token %}
         <label for="name_field">Patient name</label>
         <input id="name_field" type="text" name="name_field" value=""><br><br>
 
@@ -101,6 +102,7 @@
     <div>
         <div><h1>Or, batch-upload variants from a spreadsheet</h1></div>
         <form action="upload.php" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
         <input type="file" name="uploaded_tsv" id="uploaded_tsv">
         <input type="submit" value="Upload a tab-delimited file" name="submit">
         </form>
