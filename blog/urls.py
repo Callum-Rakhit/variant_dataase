@@ -22,7 +22,7 @@ urlpatterns = [
     # ex: /blog/post/5/comment/
     path('variant/<int:pk>/comment/', CommentCreate.as_view(), name='create_comment'),
     # add variant urls
-    path('variant/create/', VariantCreate.as_view(), name='create_variant'),
-    path('variant/create/<int:pk>/update', VariantUpdate.as_view(), name='update_variant'),
+    path('variant/create_variant/', VariantCreate.as_view(), name='create_variant'),
+    path('variant/create_variant/<int:pk>/update', VariantUpdate.as_view(), name='update_variant'),
     path('variant/<int:pk>/delete/', VariantDelete.as_view(), name='delete_variant')
 ]
